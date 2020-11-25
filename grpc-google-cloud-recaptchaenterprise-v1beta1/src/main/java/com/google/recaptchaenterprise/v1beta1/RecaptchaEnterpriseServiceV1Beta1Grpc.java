@@ -22,13 +22,7 @@ import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
-/**
- *
- *
- * <pre>
- * Service to determine the likelihood an event is legitimate.
- * </pre>
- */
+/** */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler",
     comments = "Source: google/cloud/recaptchaenterprise/v1beta1/recaptchaenterprise.proto")
@@ -420,23 +414,11 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
     return RecaptchaEnterpriseServiceV1Beta1FutureStub.newStub(factory, channel);
   }
 
-  /**
-   *
-   *
-   * <pre>
-   * Service to determine the likelihood an event is legitimate.
-   * </pre>
-   */
+  /** */
   public abstract static class RecaptchaEnterpriseServiceV1Beta1ImplBase
       implements io.grpc.BindableService {
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates an Assessment of the likelihood an event is legitimate.
-     * </pre>
-     */
+    /** */
     public void createAssessment(
         com.google.recaptchaenterprise.v1beta1.CreateAssessmentRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Assessment>
@@ -444,14 +426,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       asyncUnimplementedUnaryCall(getCreateAssessmentMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Annotates a previously created Assessment to provide additional information
-     * on whether the event turned out to be authentic or fradulent.
-     * </pre>
-     */
+    /** */
     public void annotateAssessment(
         com.google.recaptchaenterprise.v1beta1.AnnotateAssessmentRequest request,
         io.grpc.stub.StreamObserver<
@@ -460,26 +435,14 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       asyncUnimplementedUnaryCall(getAnnotateAssessmentMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates a new reCAPTCHA Enterprise key.
-     * </pre>
-     */
+    /** */
     public void createKey(
         com.google.recaptchaenterprise.v1beta1.CreateKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateKeyMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the list of all keys that belong to a project.
-     * </pre>
-     */
+    /** */
     public void listKeys(
         com.google.recaptchaenterprise.v1beta1.ListKeysRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.ListKeysResponse>
@@ -487,39 +450,21 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       asyncUnimplementedUnaryCall(getListKeysMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the specified key.
-     * </pre>
-     */
+    /** */
     public void getKey(
         com.google.recaptchaenterprise.v1beta1.GetKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
       asyncUnimplementedUnaryCall(getGetKeyMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Updates the specified key.
-     * </pre>
-     */
+    /** */
     public void updateKey(
         com.google.recaptchaenterprise.v1beta1.UpdateKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateKeyMethod(), responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Deletes the specified key.
-     * </pre>
-     */
+    /** */
     public void deleteKey(
         com.google.recaptchaenterprise.v1beta1.DeleteKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
@@ -578,13 +523,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
     }
   }
 
-  /**
-   *
-   *
-   * <pre>
-   * Service to determine the likelihood an event is legitimate.
-   * </pre>
-   */
+  /** */
   public static final class RecaptchaEnterpriseServiceV1Beta1Stub
       extends io.grpc.stub.AbstractAsyncStub<RecaptchaEnterpriseServiceV1Beta1Stub> {
     private RecaptchaEnterpriseServiceV1Beta1Stub(
@@ -598,13 +537,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       return new RecaptchaEnterpriseServiceV1Beta1Stub(channel, callOptions);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates an Assessment of the likelihood an event is legitimate.
-     * </pre>
-     */
+    /** */
     public void createAssessment(
         com.google.recaptchaenterprise.v1beta1.CreateAssessmentRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Assessment>
@@ -615,14 +548,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Annotates a previously created Assessment to provide additional information
-     * on whether the event turned out to be authentic or fradulent.
-     * </pre>
-     */
+    /** */
     public void annotateAssessment(
         com.google.recaptchaenterprise.v1beta1.AnnotateAssessmentRequest request,
         io.grpc.stub.StreamObserver<
@@ -634,13 +560,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates a new reCAPTCHA Enterprise key.
-     * </pre>
-     */
+    /** */
     public void createKey(
         com.google.recaptchaenterprise.v1beta1.CreateKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
@@ -648,13 +568,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getCreateKeyMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the list of all keys that belong to a project.
-     * </pre>
-     */
+    /** */
     public void listKeys(
         com.google.recaptchaenterprise.v1beta1.ListKeysRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.ListKeysResponse>
@@ -663,13 +577,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getListKeysMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the specified key.
-     * </pre>
-     */
+    /** */
     public void getKey(
         com.google.recaptchaenterprise.v1beta1.GetKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
@@ -677,13 +585,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getGetKeyMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Updates the specified key.
-     * </pre>
-     */
+    /** */
     public void updateKey(
         com.google.recaptchaenterprise.v1beta1.UpdateKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.recaptchaenterprise.v1beta1.Key> responseObserver) {
@@ -691,13 +593,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getUpdateKeyMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Deletes the specified key.
-     * </pre>
-     */
+    /** */
     public void deleteKey(
         com.google.recaptchaenterprise.v1beta1.DeleteKeyRequest request,
         io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
@@ -706,13 +602,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
     }
   }
 
-  /**
-   *
-   *
-   * <pre>
-   * Service to determine the likelihood an event is legitimate.
-   * </pre>
-   */
+  /** */
   public static final class RecaptchaEnterpriseServiceV1Beta1BlockingStub
       extends io.grpc.stub.AbstractBlockingStub<RecaptchaEnterpriseServiceV1Beta1BlockingStub> {
     private RecaptchaEnterpriseServiceV1Beta1BlockingStub(
@@ -726,101 +616,52 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       return new RecaptchaEnterpriseServiceV1Beta1BlockingStub(channel, callOptions);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates an Assessment of the likelihood an event is legitimate.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.Assessment createAssessment(
         com.google.recaptchaenterprise.v1beta1.CreateAssessmentRequest request) {
       return blockingUnaryCall(
           getChannel(), getCreateAssessmentMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Annotates a previously created Assessment to provide additional information
-     * on whether the event turned out to be authentic or fradulent.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.AnnotateAssessmentResponse annotateAssessment(
         com.google.recaptchaenterprise.v1beta1.AnnotateAssessmentRequest request) {
       return blockingUnaryCall(
           getChannel(), getAnnotateAssessmentMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates a new reCAPTCHA Enterprise key.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.Key createKey(
         com.google.recaptchaenterprise.v1beta1.CreateKeyRequest request) {
       return blockingUnaryCall(getChannel(), getCreateKeyMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the list of all keys that belong to a project.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.ListKeysResponse listKeys(
         com.google.recaptchaenterprise.v1beta1.ListKeysRequest request) {
       return blockingUnaryCall(getChannel(), getListKeysMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.Key getKey(
         com.google.recaptchaenterprise.v1beta1.GetKeyRequest request) {
       return blockingUnaryCall(getChannel(), getGetKeyMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Updates the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.recaptchaenterprise.v1beta1.Key updateKey(
         com.google.recaptchaenterprise.v1beta1.UpdateKeyRequest request) {
       return blockingUnaryCall(getChannel(), getUpdateKeyMethod(), getCallOptions(), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Deletes the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.protobuf.Empty deleteKey(
         com.google.recaptchaenterprise.v1beta1.DeleteKeyRequest request) {
       return blockingUnaryCall(getChannel(), getDeleteKeyMethod(), getCallOptions(), request);
     }
   }
 
-  /**
-   *
-   *
-   * <pre>
-   * Service to determine the likelihood an event is legitimate.
-   * </pre>
-   */
+  /** */
   public static final class RecaptchaEnterpriseServiceV1Beta1FutureStub
       extends io.grpc.stub.AbstractFutureStub<RecaptchaEnterpriseServiceV1Beta1FutureStub> {
     private RecaptchaEnterpriseServiceV1Beta1FutureStub(
@@ -834,13 +675,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
       return new RecaptchaEnterpriseServiceV1Beta1FutureStub(channel, callOptions);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates an Assessment of the likelihood an event is legitimate.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.Assessment>
         createAssessment(com.google.recaptchaenterprise.v1beta1.CreateAssessmentRequest request) {
@@ -848,14 +683,7 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getCreateAssessmentMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Annotates a previously created Assessment to provide additional information
-     * on whether the event turned out to be authentic or fradulent.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.AnnotateAssessmentResponse>
         annotateAssessment(
@@ -864,65 +692,35 @@ public final class RecaptchaEnterpriseServiceV1Beta1Grpc {
           getChannel().newCall(getAnnotateAssessmentMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Creates a new reCAPTCHA Enterprise key.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.Key>
         createKey(com.google.recaptchaenterprise.v1beta1.CreateKeyRequest request) {
       return futureUnaryCall(getChannel().newCall(getCreateKeyMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the list of all keys that belong to a project.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.ListKeysResponse>
         listKeys(com.google.recaptchaenterprise.v1beta1.ListKeysRequest request) {
       return futureUnaryCall(getChannel().newCall(getListKeysMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Returns the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.Key>
         getKey(com.google.recaptchaenterprise.v1beta1.GetKeyRequest request) {
       return futureUnaryCall(getChannel().newCall(getGetKeyMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Updates the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<
             com.google.recaptchaenterprise.v1beta1.Key>
         updateKey(com.google.recaptchaenterprise.v1beta1.UpdateKeyRequest request) {
       return futureUnaryCall(getChannel().newCall(getUpdateKeyMethod(), getCallOptions()), request);
     }
 
-    /**
-     *
-     *
-     * <pre>
-     * Deletes the specified key.
-     * </pre>
-     */
+    /** */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteKey(
         com.google.recaptchaenterprise.v1beta1.DeleteKeyRequest request) {
       return futureUnaryCall(getChannel().newCall(getDeleteKeyMethod(), getCallOptions()), request);
