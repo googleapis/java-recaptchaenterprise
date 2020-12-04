@@ -4,23 +4,23 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/java-recaptchaenterprise.git",
-        "sha": "8bd67ac8f6c28bb04e8da1a2717f22403262e607"
+        "sha": "c8c60b1051189c1f60e90c2c7de8fcdb4a507355"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "cbaf1b693943a074ce21797682bcc3ca75b3e7c5",
-        "internalRef": "316023196"
+        "sha": "b11a87f3b54be3a5e42c15020ee1e0781f86da90",
+        "internalRef": "344134135"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "cbaf1b693943a074ce21797682bcc3ca75b3e7c5",
-        "internalRef": "316023196"
+        "sha": "b11a87f3b54be3a5e42c15020ee1e0781f86da90",
+        "internalRef": "344134135"
       }
     },
     {
