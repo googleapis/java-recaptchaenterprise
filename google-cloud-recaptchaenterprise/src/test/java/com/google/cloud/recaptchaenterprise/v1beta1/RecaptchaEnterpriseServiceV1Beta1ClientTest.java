@@ -273,7 +273,7 @@ public class RecaptchaEnterpriseServiceV1Beta1ClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .build();
     mockRecaptchaEnterpriseServiceV1Beta1.addResponse(expectedResponse);
 
@@ -330,7 +330,7 @@ public class RecaptchaEnterpriseServiceV1Beta1ClientTest {
         ListKeysRequest.newBuilder()
             .setParent(ProjectName.of("[PROJECT]").toString())
             .setPageSize(883849137)
-            .setPageToken("page_token1630607433")
+            .setPageToken("pageToken873572522")
             .build();
 
     ListKeysPagedResponse pagedListResponse = client.listKeys(request);
@@ -363,7 +363,7 @@ public class RecaptchaEnterpriseServiceV1Beta1ClientTest {
           ListKeysRequest.newBuilder()
               .setParent(ProjectName.of("[PROJECT]").toString())
               .setPageSize(883849137)
-              .setPageToken("page_token1630607433")
+              .setPageToken("pageToken873572522")
               .build();
       client.listKeys(request);
       Assert.fail("No exception raised");
@@ -377,7 +377,7 @@ public class RecaptchaEnterpriseServiceV1Beta1ClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .build();
     mockRecaptchaEnterpriseServiceV1Beta1.addResponse(expectedResponse);
 
@@ -418,7 +418,7 @@ public class RecaptchaEnterpriseServiceV1Beta1ClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .build();
     mockRecaptchaEnterpriseServiceV1Beta1.addResponse(expectedResponse);
 
