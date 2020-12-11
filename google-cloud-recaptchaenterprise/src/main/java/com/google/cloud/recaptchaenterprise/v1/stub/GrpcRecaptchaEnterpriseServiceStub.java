@@ -156,12 +156,22 @@ public class GrpcRecaptchaEnterpriseServiceStub extends RecaptchaEnterpriseServi
         callableFactory);
   }
 
+  /**
+   * Constructs an instance of GrpcRecaptchaEnterpriseServiceStub, using the given settings. This is
+   * protected so that it is easy to make a subclass, but otherwise, the static factory methods
+   * should be preferred.
+   */
   protected GrpcRecaptchaEnterpriseServiceStub(
       RecaptchaEnterpriseServiceStubSettings settings, ClientContext clientContext)
       throws IOException {
     this(settings, clientContext, new GrpcRecaptchaEnterpriseServiceCallableFactory());
   }
 
+  /**
+   * Constructs an instance of GrpcRecaptchaEnterpriseServiceStub, using the given settings. This is
+   * protected so that it is easy to make a subclass, but otherwise, the static factory methods
+   * should be preferred.
+   */
   protected GrpcRecaptchaEnterpriseServiceStub(
       RecaptchaEnterpriseServiceStubSettings settings,
       ClientContext clientContext,
