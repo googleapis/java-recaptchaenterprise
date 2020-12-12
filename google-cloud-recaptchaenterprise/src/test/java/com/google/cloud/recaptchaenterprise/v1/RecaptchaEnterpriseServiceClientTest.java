@@ -273,7 +273,7 @@ public class RecaptchaEnterpriseServiceClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .putAllLabels(new HashMap<String, String>())
             .setCreateTime(Timestamp.newBuilder().build())
             .build();
@@ -332,7 +332,7 @@ public class RecaptchaEnterpriseServiceClientTest {
         ListKeysRequest.newBuilder()
             .setParent(ProjectName.of("[PROJECT]").toString())
             .setPageSize(883849137)
-            .setPageToken("page_token1630607433")
+            .setPageToken("pageToken873572522")
             .build();
 
     ListKeysPagedResponse pagedListResponse = client.listKeys(request);
@@ -365,7 +365,7 @@ public class RecaptchaEnterpriseServiceClientTest {
           ListKeysRequest.newBuilder()
               .setParent(ProjectName.of("[PROJECT]").toString())
               .setPageSize(883849137)
-              .setPageToken("page_token1630607433")
+              .setPageToken("pageToken873572522")
               .build();
       client.listKeys(request);
       Assert.fail("No exception raised");
@@ -379,7 +379,7 @@ public class RecaptchaEnterpriseServiceClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .putAllLabels(new HashMap<String, String>())
             .setCreateTime(Timestamp.newBuilder().build())
             .build();
@@ -422,7 +422,7 @@ public class RecaptchaEnterpriseServiceClientTest {
     Key expectedResponse =
         Key.newBuilder()
             .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
-            .setDisplayName("display_name1615086568")
+            .setDisplayName("displayName1714148973")
             .putAllLabels(new HashMap<String, String>())
             .setCreateTime(Timestamp.newBuilder().build())
             .build();
