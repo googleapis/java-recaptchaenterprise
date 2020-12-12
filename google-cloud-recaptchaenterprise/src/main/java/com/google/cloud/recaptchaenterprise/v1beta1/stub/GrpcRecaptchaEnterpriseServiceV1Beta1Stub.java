@@ -157,12 +157,22 @@ public class GrpcRecaptchaEnterpriseServiceV1Beta1Stub
         callableFactory);
   }
 
+  /**
+   * Constructs an instance of GrpcRecaptchaEnterpriseServiceV1Beta1Stub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static factory
+   * methods should be preferred.
+   */
   protected GrpcRecaptchaEnterpriseServiceV1Beta1Stub(
       RecaptchaEnterpriseServiceV1Beta1StubSettings settings, ClientContext clientContext)
       throws IOException {
     this(settings, clientContext, new GrpcRecaptchaEnterpriseServiceV1Beta1CallableFactory());
   }
 
+  /**
+   * Constructs an instance of GrpcRecaptchaEnterpriseServiceV1Beta1Stub, using the given settings.
+   * This is protected so that it is easy to make a subclass, but otherwise, the static factory
+   * methods should be preferred.
+   */
   protected GrpcRecaptchaEnterpriseServiceV1Beta1Stub(
       RecaptchaEnterpriseServiceV1Beta1StubSettings settings,
       ClientContext clientContext,
