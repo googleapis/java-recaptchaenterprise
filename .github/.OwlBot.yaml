@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This script is used to synthesize generated parts of this library."""
+docker:
+  image: gcr.io/repo-automation-bots/owlbot-java:latest
 
-import synthtool.languages.java as java
+deep-remove-regex:
+- /(proto|grpc|gapic)-.*/src
 
-AUTOSYNTH_MULTIPLE_COMMITS = True
+deep-copy-regex:
+- source: /google/cloud/recaptchaenterprise/v.*/.*-java/((proto|grpc|gapic)-.*)-java/src
+  dest: /$1/src
 
-versions = ['v1beta1', 'v1']
-service = 'recaptchaenterprise'
+begin-after-commit-hash: ebd77e76effb65c4fba8c64f31c15062c250a4c2
 
-for version in versions:
-  library = java.bazel_library(
-      service=service,
-      version=version,
-      bazel_target=f'//google/cloud/{service}/{version}:google-cloud-{service}-{version}-java',
-  )
-
-java.common_templates()
