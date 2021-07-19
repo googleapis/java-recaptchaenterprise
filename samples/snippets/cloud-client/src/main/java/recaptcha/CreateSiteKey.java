@@ -1,5 +1,7 @@
 package recaptcha;
 
+// [START recaptcha_enterprise_create_site_key]
+
 import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
 import com.google.recaptchaenterprise.v1.CreateKeyRequest;
 import com.google.recaptchaenterprise.v1.Key;
@@ -12,6 +14,7 @@ import java.io.IOException;
 public class CreateSiteKey {
 
   public static void main(String[] args) throws IOException {
+    // TODO(developer): Replace these variables before running the sample.
     String projectID = "project-id";
     String domainName = "domain-name";
 
@@ -25,6 +28,10 @@ public class CreateSiteKey {
    * @param domainName: Specify the domain name in which the reCAPTCHA should be activated.
    */
   public static void createSiteKey(String projectID, String domainName) throws IOException {
+    // Initialize client that will be used to send requests. This client only needs to be created
+    // once, and can be reused for multiple requests. After completing all of your requests, call
+    // the `client.close()` method on the client to safely
+    // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Set the type of reCAPTCHA to be displayed.
@@ -46,6 +53,6 @@ public class CreateSiteKey {
       System.out.println("reCAPTCHA Site key created successfully: " + response.getName());
     }
   }
-
 }
+// [END recaptcha_enterprise_create_site_key]
 

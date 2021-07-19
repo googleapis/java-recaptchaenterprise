@@ -1,5 +1,7 @@
 package recaptcha;
 
+// [START recaptcha_enterprise_create_assessment]
+
 import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
 import com.google.recaptchaenterprise.v1.Assessment;
 import com.google.recaptchaenterprise.v1.CreateAssessmentRequest;
@@ -11,6 +13,7 @@ import java.io.IOException;
 public class CreateAssessment {
 
   public static void main(String[] args) throws IOException {
+    // TODO(developer): Replace these variables before running the sample.
     String projectID = "project-id";
     String recaptchaSiteKey = "recaptcha-site-key";
     String token = "action-token";
@@ -31,7 +34,10 @@ public class CreateAssessment {
   public static void createAssessment(String projectID, String recaptchaSiteKey, String token,
       String recaptchaAction)
       throws IOException {
-
+    // Initialize client that will be used to send requests. This client only needs to be created
+    // once, and can be reused for multiple requests. After completing all of your requests, call
+    // the `client.close()` method on the client to safely
+    // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Set the properties of the event to be tracked.
@@ -72,7 +78,7 @@ public class CreateAssessment {
       for (ClassificationReason reason : response.getRiskAnalysis().getReasonsList()) {
         System.out.println(reason);
       }
-
     }
   }
 }
+// [END recaptcha_enterprise_create_assessment]
