@@ -41,6 +41,7 @@ public class CreateSiteKey {
           .setDisplayName("any_descriptive_name_for_the_key")
           .setWebSettings(WebKeySettings.newBuilder()
               .addAllowedDomains(domainName)
+              .setAllowAmpTraffic(false)
               .setIntegrationType(IntegrationType.CHECKBOX)
               .setChallengeSecurityPreference(ChallengeSecurityPreference.BALANCE).build())
           .build();
