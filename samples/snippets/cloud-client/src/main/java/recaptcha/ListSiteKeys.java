@@ -12,7 +12,7 @@ public class ListSiteKeys {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectID = "project-id";
+    String projectID = "your-project-id";
 
     listSiteKeys(projectID);
   }
@@ -28,7 +28,7 @@ public class ListSiteKeys {
     // the `client.close()` method on the client to safely
     // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
-      // Set the project id to list the keys present in it.
+      // Set the project ID to list the keys present in it.
       ListKeysRequest listKeysRequest = ListKeysRequest.newBuilder()
           .setParent(ProjectName.of(projectID).toString())
           .build();

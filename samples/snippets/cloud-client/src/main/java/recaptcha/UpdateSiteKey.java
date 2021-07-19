@@ -17,19 +17,19 @@ public class UpdateSiteKey {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectID = "project-id";
-    String recaptchaSiteKeyName = "recaptcha-site-key-name";
+    String projectID = "your-project-id";
+    String recaptchaSiteKeyID = "recaptcha-site-key-id";
 
-    updateSiteKey(projectID, recaptchaSiteKeyName);
+    updateSiteKey(projectID, recaptchaSiteKeyID);
   }
 
   /**
    * Update the properties of the given site key present under the project id.
    *
    * @param projectID: GCloud Project ID.
-   * @param recaptchaSiteKeyName: Specify the site key to be updated.
+   * @param recaptchaSiteKeyID: Specify the site key to be updated.
    */
-  public static void updateSiteKey(String projectID, String recaptchaSiteKeyName) throws IOException {
+  public static void updateSiteKey(String projectID, String recaptchaSiteKeyID) throws IOException {
     // Initialize client that will be used to send requests. This client only needs to be created
     // once, and can be reused for multiple requests. After completing all of your requests, call
     // the `client.close()` method on the client to safely
@@ -39,10 +39,10 @@ public class UpdateSiteKey {
       // Set the name and the new settings for the key.
       UpdateKeyRequest updateKeyRequest = UpdateKeyRequest.newBuilder()
           .setKey(Key.newBuilder()
-              .setName(KeyName.of(projectID, recaptchaSiteKeyName).toString())
+              .setName(KeyName.of(projectID, recaptchaSiteKeyID).toString())
               .setWebSettings(WebKeySettings.newBuilder()
-                  .setIntegrationType(IntegrationType.CHECKBOX)
-                  .setChallengeSecurityPreference(ChallengeSecurityPreference.BALANCE).build())
+                  .addAllowedDomains("exampledomain.com")
+                  .setChallengeSecurityPreference(ChallengeSecurityPreference.SECURITY).build())
               .build())
           .setUpdateMask(FieldMask.newBuilder().build())
           .build();
@@ -51,7 +51,7 @@ public class UpdateSiteKey {
 
       // Check if the key has been updated.
       GetKeyRequest getKeyRequest = GetKeyRequest.newBuilder()
-          .setName(KeyName.of(projectID, recaptchaSiteKeyName).toString()).build();
+          .setName(KeyName.of(projectID, recaptchaSiteKeyID).toString()).build();
       Key response = client.getKey(getKeyRequest);
 
       if (response.getWebSettings().getIntegrationType() != IntegrationType.CHECKBOX) {
