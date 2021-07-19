@@ -9,24 +9,24 @@ public class DeleteSiteKey {
 
   public static void main(String[] args) throws IOException {
     String projectID = "project-id";
-    String recaptchaSiteKey = "recaptcha-site-key";
+    String recaptchaSiteKeyName = "recaptcha-site-key-name";
 
-    deleteSiteKey(projectID, recaptchaSiteKey);
+    deleteSiteKey(projectID, recaptchaSiteKeyName);
   }
 
   /**
    * Delete the given reCAPTCHA site key present under the project ID.
    *
    * @param projectID: GCloud Project ID.
-   * @param recaptchaSiteKey: Specify the key ID to be deleted.
+   * @param recaptchaSiteKeyName: Specify the key ID to be deleted.
    */
-  public static void deleteSiteKey(String projectID, String recaptchaSiteKey) throws IOException {
+  public static void deleteSiteKey(String projectID, String recaptchaSiteKeyName) throws IOException {
 
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Set the project ID and reCAPTCHA site key.
       DeleteKeyRequest deleteKeyRequest = DeleteKeyRequest.newBuilder()
-          .setName(KeyName.of(projectID, recaptchaSiteKey).toString())
+          .setName(KeyName.of(projectID, recaptchaSiteKeyName).toString())
           .build();
 
       client.deleteKey(deleteKeyRequest);
