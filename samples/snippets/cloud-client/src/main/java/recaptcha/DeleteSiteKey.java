@@ -11,8 +11,8 @@ public class DeleteSiteKey {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectID = "project-id";
-    String recaptchaSiteKeyName = "recaptcha-site-key-name";
+    String projectID = "your-project-id";
+    String recaptchaSiteKeyName = "recaptcha-site-key-id";
 
     deleteSiteKey(projectID, recaptchaSiteKeyName);
   }

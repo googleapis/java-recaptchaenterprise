@@ -69,7 +69,7 @@ public class CreateAssessment {
         return;
       }
 
-      // Get the risk score and the reason.
+      // Get the risk score and the reason(s).
       // For more information on interpreting the assessment,
       // see: https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment
       float recaptchaScore = response.getRiskAnalysis().getScore();
