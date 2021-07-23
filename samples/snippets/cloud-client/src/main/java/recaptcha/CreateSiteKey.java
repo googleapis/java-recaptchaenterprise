@@ -37,7 +37,7 @@ public class CreateSiteKey {
 
       // Set the type of reCAPTCHA to be displayed.
       // For different types, see: https://cloud.google.com/recaptcha-enterprise/docs/keys
-      Key scoreKey = Key.newBuilder()
+      Key checkboxKey = Key.newBuilder()
           .setDisplayName("any_descriptive_name_for_the_key")
           .setWebSettings(WebKeySettings.newBuilder()
               .addAllowedDomains(domainName)
@@ -48,7 +48,7 @@ public class CreateSiteKey {
 
       CreateKeyRequest createKeyRequest = CreateKeyRequest.newBuilder()
           .setParent(ProjectName.of(projectID).toString())
-          .setKey(scoreKey)
+          .setKey(checkboxKey)
           .build();
 
       // Get the name of the created reCAPTCHA site key.
