@@ -27,7 +27,8 @@ public class CreateAssessment {
    * Create an assessment to analyze the risk of an UI action.
    *
    * @param projectID: GCloud Project ID
-   * @param recaptchaSiteKey: Site key obtained by registering a domain to use recaptcha services.
+   * @param recaptchaSiteKey: Site key obtained by registering a domain/app to use recaptcha
+   * services.
    * @param token: The token obtained from the client on passing the recaptchaSiteKey.
    * @param recaptchaAction: Action name corresponding to the token.
    */
@@ -40,6 +41,8 @@ public class CreateAssessment {
     // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
+      // Specify a name for this assessment.
+      String assessmentName = "assessment-name";
       // Set the properties of the event to be tracked.
       Event event = Event.newBuilder()
           .setSiteKey(recaptchaSiteKey)
@@ -50,7 +53,7 @@ public class CreateAssessment {
       // Build the assessment request.
       CreateAssessmentRequest createAssessmentRequest = CreateAssessmentRequest.newBuilder()
           .setParent(ProjectName.of(projectID).toString())
-          .setAssessment(Assessment.newBuilder().setEvent(event).build())
+          .setAssessment(Assessment.newBuilder().setEvent(event).setName(assessmentName).build())
           .build();
 
       Assessment response = client.createAssessment(createAssessmentRequest);
