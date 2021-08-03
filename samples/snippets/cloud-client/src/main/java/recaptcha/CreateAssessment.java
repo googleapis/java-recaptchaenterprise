@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package recaptcha;
 
 // [START recaptcha_enterprise_create_assessment]
@@ -26,11 +42,11 @@ public class CreateAssessment {
   /**
    * Create an assessment to analyze the risk of an UI action.
    *
-   * @param projectID: GCloud Project ID
-   * @param recaptchaSiteKey: Site key obtained by registering a domain/app to use recaptcha
+   * @param projectID : GCloud Project ID
+   * @param recaptchaSiteKey : Site key obtained by registering a domain/app to use recaptcha
    * services.
-   * @param token: The token obtained from the client on passing the recaptchaSiteKey.
-   * @param recaptchaAction: Action name corresponding to the token.
+   * @param token : The token obtained from the client on passing the recaptchaSiteKey.
+   * @param recaptchaAction : Action name corresponding to the token.
    */
   public static void createAssessment(String projectID, String recaptchaSiteKey, String token,
       String recaptchaAction)
@@ -47,7 +63,6 @@ public class CreateAssessment {
       Event event = Event.newBuilder()
           .setSiteKey(recaptchaSiteKey)
           .setToken(token)
-          .setExpectedAction(recaptchaAction)
           .build();
 
       // Build the assessment request.
@@ -67,7 +82,10 @@ public class CreateAssessment {
 
       // Check if the expected action was executed.
       if (!response.getTokenProperties().getAction().equals(recaptchaAction)) {
-        System.out.println("The action attribute in your reCAPTCHA tag " +
+        System.out.println(
+            "The action attribute in reCAPTCHA tag is: " + response.getTokenProperties()
+                .getAction());
+        System.out.println("The action attribute in the reCAPTCHA tag " +
             "does not match the action you are expecting to score");
         return;
       }
