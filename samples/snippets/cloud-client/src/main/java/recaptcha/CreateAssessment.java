@@ -86,7 +86,7 @@ public class CreateAssessment {
             "The action attribute in reCAPTCHA tag is: " + response.getTokenProperties()
                 .getAction());
         System.out.println("The action attribute in the reCAPTCHA tag " +
-            "does not match the action you are expecting to score");
+            "does not match the action (" + recaptchaAction + ") you are expecting to score");
         return;
       }
 
