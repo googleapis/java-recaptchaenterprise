@@ -43,7 +43,7 @@ public class CreateSiteKey {
    * @param projectID : GCloud Project ID.
    * @param domainName : Specify the domain name in which the reCAPTCHA should be activated.
    */
-  public static void createSiteKey(String projectID, String domainName) throws IOException {
+  public static String createSiteKey(String projectID, String domainName) throws IOException {
     // Initialize client that will be used to send requests. This client only needs to be created
     // once, and can be reused for multiple requests. After completing all of your requests, call
     // the `client.close()` method on the client to safely
@@ -70,6 +70,7 @@ public class CreateSiteKey {
       String keyName = response.getName();
       String recaptchaSiteKey = keyName.substring(keyName.lastIndexOf("/") + 1);
       System.out.println("reCAPTCHA Site key created successfully. Site Key: " + recaptchaSiteKey);
+      return recaptchaSiteKey;
     }
   }
 }
