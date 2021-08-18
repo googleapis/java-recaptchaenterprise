@@ -19,6 +19,7 @@ package app;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +60,6 @@ public class SnippetsIT {
 
   private static final String PROJECT_ID = System.getenv("GOOGLE_CLOUD_PROJECT");
   private static final String DOMAIN_NAME = "localhost";
-  private static final String CHROMEDRIVER_EXE = "chromedriver.exe";
   private static String RECAPTCHA_SITE_KEY_1 = "recaptcha-site-key1";
   private static String RECAPTCHA_SITE_KEY_2 = "recaptcha-site-key2";
   private static WebDriver browser;
@@ -84,17 +84,9 @@ public class SnippetsIT {
     RECAPTCHA_SITE_KEY_2 = recaptcha.CreateSiteKey.createSiteKey(PROJECT_ID, DOMAIN_NAME);
     TimeUnit.SECONDS.sleep(5);
 
-    // Set Selenium Driver properties.
-    String driverFile = getDriver();
-    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-    ChromeDriverService service = new ChromeDriverService.Builder()
-        .usingDriverExecutable(new File(driverFile))
-        .build();
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox");
-    // options.addArguments("--headless");
-    options.merge(capabilities);
-    browser = new ChromeDriver(service, options);
+    // Set Selenium Driver to Chrome.
+    WebDriverManager.chromedriver().setup();
+    browser = new ChromeDriver();
   }
 
   @AfterClass
@@ -110,12 +102,6 @@ public class SnippetsIT {
 
     stdOut.close();
     System.setOut(null);
-  }
-
-  private static String getDriver() {
-    ClassLoader classLoader = SnippetsIT.class.getClassLoader();
-    URL url = classLoader.getResource(CHROMEDRIVER_EXE);
-    return url.getFile();
   }
 
   @Before

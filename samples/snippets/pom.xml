@@ -69,6 +69,12 @@
       <artifactId>guava</artifactId>
       <version>23.6-jre</version>
     </dependency>
+    <!-- Removes the dependency of driver binary file -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>4.0.0</version>
+    </dependency>
     <!-- [End_Selenium_dependencies] -->
 
 
