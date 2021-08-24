@@ -21,11 +21,9 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URI;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -42,9 +40,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -64,7 +59,7 @@ public class SnippetsIT {
   private static String RECAPTCHA_SITE_KEY_2 = "recaptcha-site-key2";
   private static WebDriver browser;
   @LocalServerPort
-  int randomServerPort;
+  private int randomServerPort;
   private ByteArrayOutputStream stdOut;
 
 
@@ -152,7 +147,8 @@ public class SnippetsIT {
   @Test
   public void testCreateAssessment() throws IOException, JSONException, InterruptedException {
     // Construct the URL to call for validating the assessment.
-    URI url = UriComponentsBuilder.fromUriString("http://localhost:" + randomServerPort + "/")
+    String assessURL = "http://localhost:" + randomServerPort + "/";
+    URI url = UriComponentsBuilder.fromUriString(assessURL)
         .queryParam("recaptchaSiteKey", RECAPTCHA_SITE_KEY_1)
         .build().encode().toUri();
 

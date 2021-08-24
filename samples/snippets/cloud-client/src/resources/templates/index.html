@@ -40,7 +40,7 @@
   <script th:src="@{https://www.google.com/recaptcha/enterprise.js(render=${siteKey})}"></script>
   <script>
     function onSubmit(token) {
-      if (!validForm()) {
+      if (!validInput()) {
         return;
       }
       console.log(token);
@@ -49,7 +49,7 @@
       responseElement.dataset.action = "login";
     }
 
-    function validForm() {
+    function validInput() {
       let uname = document.getElementById("username").value;
       let pswrd = document.getElementById("password").value;
       if (uname == null || uname == "", pswrd == null || pswrd == "") {
@@ -62,21 +62,18 @@
 </head>
 <body>
 <div id="recaptchaInput" class="container">
-  <p>
     <label for="username"><b>Username</b></label>
     <input id="username" name="uname" placeholder="Enter Username" required type="text">
-  </p>
-  <p>
     <label for="password"><b>Password</b></label>
     <input id="password" name="psw" placeholder="Enter Password" required type="password">
-  </p>
-  <p>
-  <button class="g-recaptcha" data-action='login' data-callback='onSubmit'
-          id="recaptchabutton" th:data-sitekey="${siteKey}">Submit
-  </button>
-  </p>
-  <label for="assessment"><b>reCAPTCHA Score</b></label>
+    <button class="g-recaptcha" data-action='login' data-callback='onSubmit'
+            id="recaptchabutton" th:data-sitekey="${siteKey}">Submit
+    </button>
+  <label for="assessment">Score</label>
   <input data-action="" data-token="" id="assessment">
+</div>
+<div>
+
 </div>
 </body>
 </html>
