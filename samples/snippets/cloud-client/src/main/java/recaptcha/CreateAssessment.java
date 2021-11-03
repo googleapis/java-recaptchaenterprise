@@ -63,8 +63,7 @@ public class CreateAssessment {
       CreateAssessmentRequest createAssessmentRequest =
           CreateAssessmentRequest.newBuilder()
               .setParent(ProjectName.of(projectID).toString())
-              .setAssessment(
-                  Assessment.newBuilder().setEvent(event).build())
+              .setAssessment(Assessment.newBuilder().setEvent(event).build())
               .build();
 
       Assessment response = client.createAssessment(createAssessmentRequest);
