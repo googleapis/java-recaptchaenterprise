@@ -56,8 +56,6 @@ public class CreateAssessment {
     // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
-      // Specify a name for this assessment.
-      String assessmentName = "assessment-name";
       // Set the properties of the event to be tracked.
       Event event = Event.newBuilder().setSiteKey(recaptchaSiteKey).setToken(token).build();
 
@@ -66,7 +64,7 @@ public class CreateAssessment {
           CreateAssessmentRequest.newBuilder()
               .setParent(ProjectName.of(projectID).toString())
               .setAssessment(
-                  Assessment.newBuilder().setEvent(event).setName(assessmentName).build())
+                  Assessment.newBuilder().setEvent(event).build())
               .build();
 
       Assessment response = client.createAssessment(createAssessmentRequest);
