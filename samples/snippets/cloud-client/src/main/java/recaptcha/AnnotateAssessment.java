@@ -31,8 +31,8 @@ public class AnnotateAssessment {
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
     String projectID = "project-id";
-    String assessmentName = "assessment-name";
-    annotateAssessment(projectID, assessmentName);
+    String assessmentId = "assessment-id";
+    annotateAssessment(projectID, assessmentId);
   }
 
   /**
