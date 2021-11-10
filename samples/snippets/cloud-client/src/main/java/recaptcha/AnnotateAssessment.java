@@ -38,8 +38,7 @@ public class AnnotateAssessment {
   /**
    * Pre-requisite: Create an assessment before annotating.
    *
-   * Annotate an assessment to provide feedback on the correctness of recaptcha
-   * prediction.
+   * <p>Annotate an assessment to provide feedback on the correctness of recaptcha prediction.
    *
    * @param projectID: GCloud Project id
    * @param assessmentId: Value of the 'name' field returned from the CreateAssessment call.
@@ -53,18 +52,17 @@ public class AnnotateAssessment {
       // Build the annotation request.
       // For more info on when/how to annotate, see:
       // https://cloud.google.com/recaptcha-enterprise/docs/annotate-assessment#when_to_annotate
-      AnnotateAssessmentRequest annotateAssessmentRequest = AnnotateAssessmentRequest.newBuilder()
-          .setName(AssessmentName.of(projectID, assessmentId).toString())
-          .setAnnotation(Annotation.FRAUDULENT)
-          .addReasons(Reason.FAILED_TWO_FACTOR)
-          .build();
+      AnnotateAssessmentRequest annotateAssessmentRequest =
+          AnnotateAssessmentRequest.newBuilder()
+              .setName(AssessmentName.of(projectID, assessmentId).toString())
+              .setAnnotation(Annotation.FRAUDULENT)
+              .addReasons(Reason.FAILED_TWO_FACTOR)
+              .build();
 
       // Empty response is sent back.
       AnnotateAssessmentResponse response = client.annotateAssessment(annotateAssessmentRequest);
       System.out.println("Annotated response sent successfully ! " + response);
     }
   }
-
 }
 // [END recaptcha_enterprise_annotate_assessment]
-

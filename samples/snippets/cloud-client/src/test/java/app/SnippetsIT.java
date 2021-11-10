@@ -162,7 +162,6 @@ public class SnippetsIT {
     assertThat(stdOut.toString()).contains("Annotated response sent successfully ! ");
   }
 
-
   public JSONObject createAssessment(String testURL)
       throws IOException, JSONException, InterruptedException {
 
@@ -170,9 +169,11 @@ public class SnippetsIT {
     JSONObject tokenActionPair = initiateBrowserTest(testURL);
 
     // Send the token for analysis. The analysis score ranges from 0.0 to 1.0
-    recaptcha.CreateAssessment
-        .createAssessment(PROJECT_ID, RECAPTCHA_SITE_KEY_1, tokenActionPair.getString("token"),
-            tokenActionPair.getString("action"));
+    recaptcha.CreateAssessment.createAssessment(
+        PROJECT_ID,
+        RECAPTCHA_SITE_KEY_1,
+        tokenActionPair.getString("token"),
+        tokenActionPair.getString("action"));
 
     // Analyse the response.
     String response = stdOut.toString();
@@ -182,8 +183,7 @@ public class SnippetsIT {
     String assessmentName = "";
     for (String line : response.split("\n")) {
       if (line.contains("The reCAPTCHA score is: ")) {
-        recaptchaScore =
-            Float.parseFloat(substr(line));
+        recaptchaScore = Float.parseFloat(substr(line));
       } else if (line.contains("Assessment name: ")) {
         assessmentName = substr(line);
       }
@@ -191,7 +191,8 @@ public class SnippetsIT {
 
     // Set the score.
     browser.findElement(By.cssSelector("#assessment")).sendKeys(String.valueOf(recaptchaScore));
-    return new JSONObject().put("recaptchaScore", recaptchaScore)
+    return new JSONObject()
+        .put("recaptchaScore", recaptchaScore)
         .put("assessmentName", assessmentName);
   }
 
@@ -232,5 +233,4 @@ public class SnippetsIT {
   public String substr(String line) {
     return line.substring((line.lastIndexOf(":") + 1)).trim();
   }
-
 }
