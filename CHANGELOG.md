@@ -1,5 +1,17 @@
 # Changelog
 
+### [2.3.1](https://github.com/googleapis/java-recaptchaenterprise/compare/v2.3.0...v2.3.1) (2021-11-11)
+
+
+### Documentation
+
+* **samples:** added annotate assessment sample and refactored tests. ([#635](https://github.com/googleapis/java-recaptchaenterprise/issues/635)) ([436ae3e](https://github.com/googleapis/java-recaptchaenterprise/commit/436ae3ef9d5866654504c7d5bfbf6464197ceee6))
+
+
+### Dependencies
+
+* update dependency net.bytebuddy:byte-buddy to v1.12.1 ([#632](https://github.com/googleapis/java-recaptchaenterprise/issues/632)) ([dc4f340](https://github.com/googleapis/java-recaptchaenterprise/commit/dc4f340bb5cda8e585b65eb1135b459a9e4f9b0d))
+
 ## [2.3.0](https://www.github.com/googleapis/java-recaptchaenterprise/compare/v2.2.3...v2.3.0) (2021-11-08)
 
 
