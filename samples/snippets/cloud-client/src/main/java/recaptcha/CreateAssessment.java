@@ -39,8 +39,8 @@ public class CreateAssessment {
   }
 
   /**
-   * Create an assessment to analyze the risk of an UI action.
-   * Assessment approach is the same for both 'score' and 'checkbox' type recaptcha site keys.
+   * Create an assessment to analyze the risk of an UI action. Assessment approach is the same for
+   * both 'score' and 'checkbox' type recaptcha site keys.
    *
    * @param projectID : GCloud Project ID
    * @param recaptchaSiteKey : Site key obtained by registering a domain/app to use recaptcha
@@ -77,7 +77,7 @@ public class CreateAssessment {
         return;
       }
 
-      // Check if the expected action was executed. 
+      // Check if the expected action was executed.
       // (If the key is checkbox type and 'action' attribute wasn't set, skip this check.)
       if (!response.getTokenProperties().getAction().equals(recaptchaAction)) {
         System.out.println(
