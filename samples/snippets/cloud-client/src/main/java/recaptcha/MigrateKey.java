@@ -36,7 +36,8 @@ public class MigrateKey {
   /**
    * Migrate a key from reCAPTCHA (non-Enterprise) to reCAPTCHA Enterprise. If you created the key
    * using Admin console: https://www.google.com/recaptcha/admin/site, then use this API to migrate
-   * to reCAPTCHA Enterprise. For more info, see: https://cloud.google.com/recaptcha-enterprise/docs/migrate-recaptcha
+   * to reCAPTCHA Enterprise. For more info, see:
+   * https://cloud.google.com/recaptcha-enterprise/docs/migrate-recaptcha
    *
    * @param projectId: Google Cloud Project Id.
    * @param recaptchaSiteKey: Specify the site key to migrate.
@@ -49,8 +50,10 @@ public class MigrateKey {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Specify the key name to migrate.
-      MigrateKeyRequest migrateKeyRequest = MigrateKeyRequest.newBuilder()
-          .setName(KeyName.of(projectId, recaptchaSiteKey).toString()).build();
+      MigrateKeyRequest migrateKeyRequest =
+          MigrateKeyRequest.newBuilder()
+              .setName(KeyName.of(projectId, recaptchaSiteKey).toString())
+              .build();
 
       Key response = client.migrateKey(migrateKeyRequest);
 

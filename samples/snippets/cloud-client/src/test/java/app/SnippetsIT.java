@@ -63,8 +63,7 @@ public class SnippetsIT {
   private static String RECAPTCHA_SITE_KEY_1 = "recaptcha-site-key1";
   private static String RECAPTCHA_SITE_KEY_2 = "recaptcha-site-key2";
   private static WebDriver browser;
-  @LocalServerPort
-  private int randomServerPort;
+  @LocalServerPort private int randomServerPort;
   private ByteArrayOutputStream stdOut;
 
   // Check if the required environment variables are set.
@@ -167,8 +166,8 @@ public class SnippetsIT {
   @Test
   public void testGetMetrics() throws IOException {
     GetMetrics.getMetrics(PROJECT_ID, RECAPTCHA_SITE_KEY_1);
-    assertThat(stdOut.toString()).contains(
-        "Retrieved the bucket count for score based key: " + RECAPTCHA_SITE_KEY_1);
+    assertThat(stdOut.toString())
+        .contains("Retrieved the bucket count for score based key: " + RECAPTCHA_SITE_KEY_1);
   }
 
   public JSONObject createAssessment(String testURL)

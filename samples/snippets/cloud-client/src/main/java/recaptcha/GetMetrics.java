@@ -48,8 +48,10 @@ public class GetMetrics {
     // clean up any remaining background resources.
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
-      GetMetricsRequest getMetricsRequest = GetMetricsRequest.newBuilder()
-          .setName(MetricsName.of(projectId, recaptchaSiteKey).toString()).build();
+      GetMetricsRequest getMetricsRequest =
+          GetMetricsRequest.newBuilder()
+              .setName(MetricsName.of(projectId, recaptchaSiteKey).toString())
+              .build();
 
       Metrics response = client.getMetrics(getMetricsRequest);
 
