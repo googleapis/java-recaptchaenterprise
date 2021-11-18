@@ -59,6 +59,7 @@ public class GetMetrics {
       // If the site key is checkbox type: then use response.getChallengeMetricsList() instead of
       // response.getScoreMetricsList()
       for (ScoreMetrics scoreMetrics : response.getScoreMetricsList()) {
+        // Each ScoreMetrics is in the granularity of one day.
         int scoreBucketCount = scoreMetrics.getOverallMetrics().getScoreBucketsCount();
         System.out.println(scoreBucketCount);
       }
