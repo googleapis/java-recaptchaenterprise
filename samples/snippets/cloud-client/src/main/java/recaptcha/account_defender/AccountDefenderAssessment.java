@@ -83,7 +83,6 @@ public class AccountDefenderAssessment {
       // SUSPICIOUS_LOGIN_ACTIVITY, SUSPICIOUS_ACCOUNT_CREATION, RELATED_ACCOUNTS_NUMBER_HIGH.
       // For more info on these types, see: TODO
       System.out.println("Account Defender Assessment Result: " + defenderResult);
-      defenderResult.forEach(System.out::println);
     }
   }
 
