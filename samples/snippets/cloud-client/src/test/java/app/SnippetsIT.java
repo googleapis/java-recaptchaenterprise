@@ -50,6 +50,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.util.UriComponentsBuilder;
 import recaptcha.AnnotateAssessment;
+import recaptcha.GetMetrics;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
@@ -62,7 +63,8 @@ public class SnippetsIT {
   private static String RECAPTCHA_SITE_KEY_1 = "recaptcha-site-key1";
   private static String RECAPTCHA_SITE_KEY_2 = "recaptcha-site-key2";
   private static WebDriver browser;
-  @LocalServerPort private int randomServerPort;
+  @LocalServerPort
+  private int randomServerPort;
   private ByteArrayOutputStream stdOut;
 
   // Check if the required environment variables are set.
@@ -73,7 +75,7 @@ public class SnippetsIT {
   }
 
   @BeforeClass
-  public static void setUp() throws IOException, InterruptedException, JSONException {
+  public static void setUp() throws IOException, InterruptedException {
     requireEnvVar("GOOGLE_APPLICATION_CREDENTIALS");
     requireEnvVar("GOOGLE_CLOUD_PROJECT");
 
@@ -160,6 +162,13 @@ public class SnippetsIT {
     // Annotate the assessment.
     AnnotateAssessment.annotateAssessment(PROJECT_ID, ASSESSMENT_NAME);
     assertThat(stdOut.toString()).contains("Annotated response sent successfully ! ");
+  }
+
+  @Test
+  public void testGetMetrics() throws IOException {
+    GetMetrics.getMetrics(PROJECT_ID, RECAPTCHA_SITE_KEY_1);
+    assertThat(stdOut.toString()).contains(
+        "Retrieved the bucket count for score based key: " + RECAPTCHA_SITE_KEY_1);
   }
 
   public JSONObject createAssessment(String testURL)
