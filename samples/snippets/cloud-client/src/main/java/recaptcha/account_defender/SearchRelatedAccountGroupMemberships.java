@@ -34,6 +34,12 @@ public class SearchRelatedAccountGroupMemberships {
     searchRelatedAccountGroupMemberships(projectId, hashedAccountId);
   }
 
+  /**
+   * List group memberships for the account id.
+   *
+   * @param projectId: Google Cloud Project Id.
+   * @param hashedAccountId: HMAC SHA 256- Hashed account id of the user executing the action.
+   */
   public static void searchRelatedAccountGroupMemberships(String projectId,
       ByteString hashedAccountId) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {

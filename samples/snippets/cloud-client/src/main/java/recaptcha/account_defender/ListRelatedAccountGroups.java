@@ -32,16 +32,20 @@ public class ListRelatedAccountGroups {
     listRelatedAccountGroups(projectId);
   }
 
+  /**
+   * List related account groups in the project.
+   *
+   * @param projectId : Google Cloud Project Id.
+   */
   public static void listRelatedAccountGroups(String projectId)
       throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
-      ListRelatedAccountGroupsRequest listRelatedAccountGroupsRequest = ListRelatedAccountGroupsRequest.newBuilder()
+      ListRelatedAccountGroupsRequest request = ListRelatedAccountGroupsRequest.newBuilder()
           .setParent("projects/" + projectId)
           .build();
 
-      for (RelatedAccountGroup group : client.listRelatedAccountGroups(
-          listRelatedAccountGroupsRequest).iterateAll()) {
+      for (RelatedAccountGroup group : client.listRelatedAccountGroups(request).iterateAll()) {
         System.out.println(group.getName());
       }
     }

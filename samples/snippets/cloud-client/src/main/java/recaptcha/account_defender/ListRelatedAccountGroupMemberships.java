@@ -32,6 +32,12 @@ public class ListRelatedAccountGroupMemberships {
     listRelatedAccountGroupMemberships(projectId, relatedAccountGroup);
   }
 
+  /**
+   * List memberships in a group.
+   *
+   * @param projectId: Google Cloud Project Id.
+   * @param relatedAccountGroup: Name of the account group.
+   */
   public static void listRelatedAccountGroupMemberships(String projectId,
       String relatedAccountGroup) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
