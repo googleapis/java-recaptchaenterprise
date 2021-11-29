@@ -277,7 +277,8 @@ public class MockRecaptchaEnterpriseServiceImpl extends RecaptchaEnterpriseServi
       responseObserver.onError(
           new IllegalArgumentException(
               String.format(
-                  "Unrecognized response type %s for method ListRelatedAccountGroups, expected %s or %s",
+                  "Unrecognized response type %s for method ListRelatedAccountGroups, expected %s"
+                      + " or %s",
                   response == null ? "null" : response.getClass().getName(),
                   ListRelatedAccountGroupsResponse.class.getName(),
                   Exception.class.getName())));
@@ -299,7 +300,8 @@ public class MockRecaptchaEnterpriseServiceImpl extends RecaptchaEnterpriseServi
       responseObserver.onError(
           new IllegalArgumentException(
               String.format(
-                  "Unrecognized response type %s for method ListRelatedAccountGroupMemberships, expected %s or %s",
+                  "Unrecognized response type %s for method ListRelatedAccountGroupMemberships,"
+                      + " expected %s or %s",
                   response == null ? "null" : response.getClass().getName(),
                   ListRelatedAccountGroupMembershipsResponse.class.getName(),
                   Exception.class.getName())));
@@ -321,7 +323,8 @@ public class MockRecaptchaEnterpriseServiceImpl extends RecaptchaEnterpriseServi
       responseObserver.onError(
           new IllegalArgumentException(
               String.format(
-                  "Unrecognized response type %s for method SearchRelatedAccountGroupMemberships, expected %s or %s",
+                  "Unrecognized response type %s for method SearchRelatedAccountGroupMemberships,"
+                      + " expected %s or %s",
                   response == null ? "null" : response.getClass().getName(),
                   SearchRelatedAccountGroupMembershipsResponse.class.getName(),
                   Exception.class.getName())));
