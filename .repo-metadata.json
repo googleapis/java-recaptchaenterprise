@@ -1,10 +1,10 @@
 {
-    "name": "recaptchaenterprise",
+    "api_shortname": "recaptchaenterprise",
     "name_pretty": "reCAPTCHA Enterprise",
     "product_documentation": "https://cloud.google.com/recaptcha-enterprise/docs/",
     "client_documentation": "https://cloud.google.com/java/docs/reference/google-cloud-recaptchaenterprise/latest/history",
     "issue_tracker": "",
-    "release_level": "ga",
+    "release_level": "stable",
     "language": "java",
     "repo": "googleapis/java-recaptchaenterprise",
     "repo_short": "java-recaptchaenterprise",
