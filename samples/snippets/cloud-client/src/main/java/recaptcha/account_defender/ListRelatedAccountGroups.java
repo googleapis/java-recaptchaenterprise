@@ -45,6 +45,7 @@ public class ListRelatedAccountGroups {
           .setParent("projects/" + projectId)
           .build();
 
+      System.out.println("Listing related account groups..");
       for (RelatedAccountGroup group : client.listRelatedAccountGroups(request).iterateAll()) {
         System.out.println(group.getName());
       }

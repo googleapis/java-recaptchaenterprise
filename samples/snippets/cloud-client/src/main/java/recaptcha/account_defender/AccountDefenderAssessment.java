@@ -17,6 +17,7 @@
 package account_defender;
 
 // [START recaptcha_enterprise_account_defender_assessment]
+
 import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
 import com.google.protobuf.ByteString;
 import com.google.recaptchaenterprise.v1.AccountDefenderAssessment.AccountDefenderLabel;
@@ -53,7 +54,7 @@ public class AccountDefenderAssessment {
    * services.
    * @param token: The token obtained from the client on passing the recaptchaSiteKey.
    * @param recaptchaAction: Action name corresponding to the token.
-   * @param hashedAccountId: HMAC SHA 256- Hashed account id of the user executing the action.
+   * @param hashedAccountId: HMAC SHA256 - Hashed any unique id of the user executing the action.
    */
   public static void accountDefenderAssessment(
       String projectId, String recaptchaSiteKey, String token, String recaptchaAction,
@@ -92,12 +93,17 @@ public class AccountDefenderAssessment {
       System.out.println("The reCAPTCHA score is: " + recaptchaScore);
 
       // Get the Account Defender result.
+      com.google.recaptchaenterprise.v1.AccountDefenderAssessment accountDefenderAssessment = response.getAccountDefenderAssessment();
+      System.out.println(accountDefenderAssessment);
+
+      // Get Account Defender label.
       List<AccountDefenderLabel> defenderResult = response.getAccountDefenderAssessment()
           .getLabelsList();
       // Based on the result, can you choose next steps.
+      // If the 'defenderResult' field is empty, it indicates that account defender did not have anything to add to the score.
       // Few result labels: ACCOUNT_DEFENDER_LABEL_UNSPECIFIED, PROFILE_MATCH,
       // SUSPICIOUS_LOGIN_ACTIVITY, SUSPICIOUS_ACCOUNT_CREATION, RELATED_ACCOUNTS_NUMBER_HIGH.
-      // For more info on these types, see: TODO
+      // For more info on interpreting the assessment, see: https://cloud.google.com/recaptcha-enterprise/docs/account-defender#interpret-assessment-details
       System.out.println("Account Defender Assessment Result: " + defenderResult);
     }
   }

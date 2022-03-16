@@ -46,7 +46,8 @@ public class SearchRelatedAccountGroupMemberships {
 
       SearchRelatedAccountGroupMembershipsRequest request = SearchRelatedAccountGroupMembershipsRequest.newBuilder()
           .setParent("projects/" + projectId)
-          .setHashedAccountId(hashedAccountId).build();
+          .setHashedAccountId(hashedAccountId)
+          .build();
 
       for (RelatedAccountGroupMembership groupMembership : client.searchRelatedAccountGroupMemberships(
           request).iterateAll()) {
