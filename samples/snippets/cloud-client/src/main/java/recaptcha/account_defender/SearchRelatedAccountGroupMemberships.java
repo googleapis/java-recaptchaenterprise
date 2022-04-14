@@ -23,23 +23,26 @@ import com.google.protobuf.ByteString;
 import com.google.recaptchaenterprise.v1.RelatedAccountGroupMembership;
 import com.google.recaptchaenterprise.v1.SearchRelatedAccountGroupMembershipsRequest;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 public class SearchRelatedAccountGroupMemberships {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
     // TODO(developer): Replace these variables before running the sample.
+    // projectId: Google Cloud Project Id.
     String projectId = "project-id";
+
+    // HMAC SHA-256 hashed unique id of the customer.
     ByteString hashedAccountId = ByteString.copyFrom(new byte[]{});
 
     searchRelatedAccountGroupMemberships(projectId, hashedAccountId);
   }
 
-  /**
-   * List group memberships for the account id.
-   *
-   * @param projectId: Google Cloud Project Id.
-   * @param hashedAccountId: HMAC SHA 256- Hashed account id of the user executing the action.
-   */
+
+  // List group memberships for the hashed account id.
   public static void searchRelatedAccountGroupMemberships(String projectId,
       ByteString hashedAccountId) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
@@ -53,6 +56,8 @@ public class SearchRelatedAccountGroupMemberships {
           request).iterateAll()) {
         System.out.println(groupMembership.getName());
       }
+      System.out.printf("Finished searching related account group memberships for %s!",
+          hashedAccountId);
     }
   }
 }

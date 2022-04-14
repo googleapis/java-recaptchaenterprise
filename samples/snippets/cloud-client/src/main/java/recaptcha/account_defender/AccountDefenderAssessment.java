@@ -28,33 +28,44 @@ import com.google.recaptchaenterprise.v1.ProjectName;
 import com.google.recaptchaenterprise.v1.RiskAnalysis.ClassificationReason;
 import com.google.recaptchaenterprise.v1.TokenProperties;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.UUID;
 
 public class AccountDefenderAssessment {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectID = "project-id";
-    String recaptchaSiteKey = "recaptcha-site-key";
-    String token = "recaptcha-token";
-    String recaptchaAction = "recaptcha-action";
-    ByteString hashedAccountId = ByteString.copyFrom(new byte[]{});
+    // projectId: Google Cloud Project ID
+    String projectId = "project-id";
 
-    accountDefenderAssessment(projectID, recaptchaSiteKey, token, recaptchaAction, hashedAccountId);
+    // recaptchaSiteKey: Site key obtained by registering a domain/app to use recaptcha
+    //    * services.
+    String recaptchaSiteKey = "recaptcha-site-key";
+
+    // token: The token obtained from the client on passing the recaptchaSiteKey.
+    String token = "recaptcha-token";
+
+    // recaptchaAction: Action name corresponding to the token.
+    String recaptchaAction = "recaptcha-action";
+
+    // Unique id of the customer (id can be email, customer id, etc.,).
+    String uniqueCustomerId = "default" + UUID.randomUUID().toString().split("-")[0];
+
+    // Hash the unique customer id using HMAC SHA-256.
+    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+    byte[] hashBytes = digest.digest(uniqueCustomerId.getBytes(StandardCharsets.UTF_8));
+    ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
+
+    accountDefenderAssessment(projectId, recaptchaSiteKey, token, recaptchaAction, hashedAccountId);
   }
 
   /**
    * This assessment detects account takeovers. Input -> Pass in the hashed account id. Result ->
    * Tells if the action represents an account takeover.
-   *
    * You can optionally take actions (to trigger an MFA) based on the result.
-   *
-   * @param projectId: Google Cloud Project ID
-   * @param recaptchaSiteKey: Site key obtained by registering a domain/app to use recaptcha
-   * services.
-   * @param token: The token obtained from the client on passing the recaptchaSiteKey.
-   * @param recaptchaAction: Action name corresponding to the token.
-   * @param hashedAccountId: HMAC SHA256 - Hashed any unique id of the user executing the action.
    */
   public static void accountDefenderAssessment(
       String projectId, String recaptchaSiteKey, String token, String recaptchaAction,
@@ -91,6 +102,9 @@ public class AccountDefenderAssessment {
       }
       float recaptchaScore = response.getRiskAnalysis().getScore();
       System.out.println("The reCAPTCHA score is: " + recaptchaScore);
+      String assessmentName = response.getName();
+      System.out.println(
+          "Assessment name: " + assessmentName.substring(assessmentName.lastIndexOf("/") + 1));
 
       // Get the Account Defender result.
       com.google.recaptchaenterprise.v1.AccountDefenderAssessment accountDefenderAssessment = response.getAccountDefenderAssessment();

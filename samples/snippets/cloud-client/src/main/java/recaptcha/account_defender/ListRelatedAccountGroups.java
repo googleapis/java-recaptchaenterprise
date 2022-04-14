@@ -28,15 +28,13 @@ public class ListRelatedAccountGroups {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
+    // projectId : Google Cloud Project Id.
     String projectId = "project-id";
+
     listRelatedAccountGroups(projectId);
   }
 
-  /**
-   * List related account groups in the project.
-   *
-   * @param projectId : Google Cloud Project Id.
-   */
+  // List related account groups in the project.
   public static void listRelatedAccountGroups(String projectId)
       throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {

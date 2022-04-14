@@ -27,21 +27,23 @@ public class ListRelatedAccountGroupMemberships {
 
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
+    // projectId: Google Cloud Project Id.
     String projectId = "project-id";
+
+    // relatedAccountGroup: Name of the account group.
     String relatedAccountGroup = "related-account-group-name";
+
     listRelatedAccountGroupMemberships(projectId, relatedAccountGroup);
   }
 
   /**
-   * List memberships in a group.
-   *
-   * @param projectId: Google Cloud Project Id.
-   * @param relatedAccountGroup: Name of the account group.
+   * Given a group name, list memberships in the group.
    */
   public static void listRelatedAccountGroupMemberships(String projectId,
       String relatedAccountGroup) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
+      // Construct the request.
       ListRelatedAccountGroupMembershipsRequest request = ListRelatedAccountGroupMembershipsRequest.newBuilder()
           .setParent(
               String.format("projects/%s/relatedaccountgroups/%s", projectId, relatedAccountGroup))
@@ -51,6 +53,7 @@ public class ListRelatedAccountGroupMemberships {
           request).iterateAll()) {
         System.out.println(relatedAccountGroupMembership.getName());
       }
+      System.out.println("Finished listing related account group memberships.");
     }
   }
 }
