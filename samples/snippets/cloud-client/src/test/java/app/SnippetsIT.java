@@ -60,6 +60,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.util.UriComponentsBuilder;
 import recaptcha.AnnotateAssessment;
+import recaptcha.GetMetrics;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
@@ -82,7 +83,7 @@ public class SnippetsIT {
   }
 
   @BeforeClass
-  public static void setUp() throws IOException, InterruptedException, JSONException {
+  public static void setUp() throws IOException, InterruptedException {
     requireEnvVar("GOOGLE_APPLICATION_CREDENTIALS");
     requireEnvVar("GOOGLE_CLOUD_PROJECT");
 
@@ -218,7 +219,13 @@ public class SnippetsIT {
                 "Finished searching related account group memberships for %s", hashedAccountId));
   }
 
-  public JSONObject createAssessment(String testURL, ByteString hashedAccountId)
+  public void testGetMetrics() throws IOException {
+    GetMetrics.getMetrics(PROJECT_ID, RECAPTCHA_SITE_KEY_1);
+    assertThat(stdOut.toString())
+        .contains("Retrieved the bucket count for score based key: " + RECAPTCHA_SITE_KEY_1);
+  }
+
+  public JSONObject createAssessment(String testURL)
       throws IOException, JSONException, InterruptedException {
 
     // Setup the automated browser test and retrieve the token and action.
