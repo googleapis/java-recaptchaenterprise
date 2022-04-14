@@ -23,10 +23,7 @@ import com.google.protobuf.ByteString;
 import com.google.recaptchaenterprise.v1.RelatedAccountGroupMembership;
 import com.google.recaptchaenterprise.v1.SearchRelatedAccountGroupMembershipsRequest;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
 
 public class SearchRelatedAccountGroupMemberships {
 
@@ -36,28 +33,28 @@ public class SearchRelatedAccountGroupMemberships {
     String projectId = "project-id";
 
     // HMAC SHA-256 hashed unique id of the customer.
-    ByteString hashedAccountId = ByteString.copyFrom(new byte[]{});
+    ByteString hashedAccountId = ByteString.copyFrom(new byte[] {});
 
     searchRelatedAccountGroupMemberships(projectId, hashedAccountId);
   }
 
-
   // List group memberships for the hashed account id.
-  public static void searchRelatedAccountGroupMemberships(String projectId,
-      ByteString hashedAccountId) throws IOException {
+  public static void searchRelatedAccountGroupMemberships(
+      String projectId, ByteString hashedAccountId) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
-      SearchRelatedAccountGroupMembershipsRequest request = SearchRelatedAccountGroupMembershipsRequest.newBuilder()
-          .setParent("projects/" + projectId)
-          .setHashedAccountId(hashedAccountId)
-          .build();
+      SearchRelatedAccountGroupMembershipsRequest request =
+          SearchRelatedAccountGroupMembershipsRequest.newBuilder()
+              .setParent("projects/" + projectId)
+              .setHashedAccountId(hashedAccountId)
+              .build();
 
-      for (RelatedAccountGroupMembership groupMembership : client.searchRelatedAccountGroupMemberships(
-          request).iterateAll()) {
+      for (RelatedAccountGroupMembership groupMembership :
+          client.searchRelatedAccountGroupMemberships(request).iterateAll()) {
         System.out.println(groupMembership.getName());
       }
-      System.out.printf("Finished searching related account group memberships for %s!",
-          hashedAccountId);
+      System.out.printf(
+          "Finished searching related account group memberships for %s!", hashedAccountId);
     }
   }
 }

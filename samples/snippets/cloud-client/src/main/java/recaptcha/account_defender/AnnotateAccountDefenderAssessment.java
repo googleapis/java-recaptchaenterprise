@@ -26,8 +26,6 @@ import com.google.recaptchaenterprise.v1.AnnotateAssessmentRequest.Reason;
 import com.google.recaptchaenterprise.v1.AnnotateAssessmentResponse;
 import com.google.recaptchaenterprise.v1.AssessmentName;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class AnnotateAccountDefenderAssessment {
@@ -41,18 +39,17 @@ public class AnnotateAccountDefenderAssessment {
     String assessmentId = "account-defender-assessment-id";
 
     // hashedAccountId: Set the hashedAccountId corresponding to the assessment id.
-    ByteString hashedAccountId = ByteString.copyFrom(new byte[]{});
+    ByteString hashedAccountId = ByteString.copyFrom(new byte[] {});
 
     annotateAssessment(projectID, assessmentId, hashedAccountId);
   }
 
   /**
-   * Pre-requisite: Create an assessment before annotating.
-   * Annotate an assessment to provide feedback on the correctness of recaptcha prediction.
+   * Pre-requisite: Create an assessment before annotating. Annotate an assessment to provide
+   * feedback on the correctness of recaptcha prediction.
    */
-  public static void annotateAssessment(String projectID, String assessmentId,
-      ByteString hashedAccountId)
-      throws IOException {
+  public static void annotateAssessment(
+      String projectID, String assessmentId, ByteString hashedAccountId) throws IOException {
 
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
       // Build the annotation request.
@@ -73,4 +70,3 @@ public class AnnotateAccountDefenderAssessment {
   }
 }
 // [END recaptcha_enterprise_annotate_account_defender_assessment]
-

@@ -178,8 +178,10 @@ public class SnippetsIT {
     String testURL = "http://localhost:" + randomServerPort + "/";
     // Create a random SHA-256 Hashed account id.
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
-    byte[] hashBytes = digest.digest(
-        ("default-" + UUID.randomUUID().toString().split("-")[0]).getBytes(StandardCharsets.UTF_8));
+    byte[] hashBytes =
+        digest.digest(
+            ("default-" + UUID.randomUUID().toString().split("-")[0])
+                .getBytes(StandardCharsets.UTF_8));
     ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
 
     // Create the assessment.
@@ -189,8 +191,8 @@ public class SnippetsIT {
     assertThat(assessmentName).isNotEmpty();
 
     // Annotate the assessment.
-    AnnotateAccountDefenderAssessment.annotateAssessment(PROJECT_ID, assessmentName,
-        hashedAccountId);
+    AnnotateAccountDefenderAssessment.annotateAssessment(
+        PROJECT_ID, assessmentName, hashedAccountId);
     assertThat(stdOut.toString()).contains("Annotated response sent successfully ! ");
 
     // NOTE: The below assert statements have no significant effect,
@@ -208,13 +210,13 @@ public class SnippetsIT {
     assertThat(stdOut.toString()).contains("Finished listing related account group memberships.");
 
     // Search related group memberships for a hashed account id.
-    SearchRelatedAccountGroupMemberships.searchRelatedAccountGroupMemberships(PROJECT_ID,
-        hashedAccountId);
-    assertThat(stdOut.toString()).contains(
-        String.format("Finished searching related account group memberships for %s",
-            hashedAccountId));
+    SearchRelatedAccountGroupMemberships.searchRelatedAccountGroupMemberships(
+        PROJECT_ID, hashedAccountId);
+    assertThat(stdOut.toString())
+        .contains(
+            String.format(
+                "Finished searching related account group memberships for %s", hashedAccountId));
   }
-
 
   public JSONObject createAssessment(String testURL, ByteString hashedAccountId)
       throws IOException, JSONException, InterruptedException {

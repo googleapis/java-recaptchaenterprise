@@ -64,21 +64,27 @@ public class AccountDefenderAssessment {
 
   /**
    * This assessment detects account takeovers. Input -> Pass in the hashed account id. Result ->
-   * Tells if the action represents an account takeover.
-   * You can optionally take actions (to trigger an MFA) based on the result.
+   * Tells if the action represents an account takeover. You can optionally take actions (to trigger
+   * an MFA) based on the result.
    */
   public static void accountDefenderAssessment(
-      String projectId, String recaptchaSiteKey, String token, String recaptchaAction,
-      ByteString hashedAccountId) throws IOException {
+      String projectId,
+      String recaptchaSiteKey,
+      String token,
+      String recaptchaAction,
+      ByteString hashedAccountId)
+      throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Set the properties of the event to be tracked.
-      Event event = Event.newBuilder()
-          .setSiteKey(recaptchaSiteKey)
-          .setToken(token)
-          // Set the hashed account id (of the user).
-          // Recommended approach: HMAC SHA256 along with salt (or secret key).
-          .setHashedAccountId(hashedAccountId).build();
+      Event event =
+          Event.newBuilder()
+              .setSiteKey(recaptchaSiteKey)
+              .setToken(token)
+              // Set the hashed account id (of the user).
+              // Recommended approach: HMAC SHA256 along with salt (or secret key).
+              .setHashedAccountId(hashedAccountId)
+              .build();
 
       // Build the assessment request.
       CreateAssessmentRequest createAssessmentRequest =
@@ -107,23 +113,26 @@ public class AccountDefenderAssessment {
           "Assessment name: " + assessmentName.substring(assessmentName.lastIndexOf("/") + 1));
 
       // Get the Account Defender result.
-      com.google.recaptchaenterprise.v1.AccountDefenderAssessment accountDefenderAssessment = response.getAccountDefenderAssessment();
+      com.google.recaptchaenterprise.v1.AccountDefenderAssessment accountDefenderAssessment =
+          response.getAccountDefenderAssessment();
       System.out.println(accountDefenderAssessment);
 
       // Get Account Defender label.
-      List<AccountDefenderLabel> defenderResult = response.getAccountDefenderAssessment()
-          .getLabelsList();
+      List<AccountDefenderLabel> defenderResult =
+          response.getAccountDefenderAssessment().getLabelsList();
       // Based on the result, can you choose next steps.
-      // If the 'defenderResult' field is empty, it indicates that account defender did not have anything to add to the score.
+      // If the 'defenderResult' field is empty, it indicates that account defender did not have
+      // anything to add to the score.
       // Few result labels: ACCOUNT_DEFENDER_LABEL_UNSPECIFIED, PROFILE_MATCH,
       // SUSPICIOUS_LOGIN_ACTIVITY, SUSPICIOUS_ACCOUNT_CREATION, RELATED_ACCOUNTS_NUMBER_HIGH.
-      // For more info on interpreting the assessment, see: https://cloud.google.com/recaptcha-enterprise/docs/account-defender#interpret-assessment-details
+      // For more info on interpreting the assessment, see:
+      // https://cloud.google.com/recaptcha-enterprise/docs/account-defender#interpret-assessment-details
       System.out.println("Account Defender Assessment Result: " + defenderResult);
     }
   }
 
-  private static boolean checkTokenIntegrity(TokenProperties tokenProperties,
-      String recaptchaAction) {
+  private static boolean checkTokenIntegrity(
+      TokenProperties tokenProperties, String recaptchaAction) {
     // Check if the token is valid.
     if (!tokenProperties.getValid()) {
       System.out.println(
