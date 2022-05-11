@@ -199,11 +199,11 @@ public class SnippetsIT {
     // to cluster results.
     // Hence, re-running the test 'n' times is currently out of scope.
 
-    // List Related account groups in a project.
+    // List related account groups in the project.
     ListRelatedAccountGroups.listRelatedAccountGroups(PROJECT_ID);
     assertThat(stdOut.toString()).contains("Listing related account groups..");
 
-    // List Related account group memberships.
+    // List related account group memberships.
     ListRelatedAccountGroupMemberships.listRelatedAccountGroupMemberships(PROJECT_ID, "legitimate");
     assertThat(stdOut.toString()).contains("Finished listing related account group memberships.");
 

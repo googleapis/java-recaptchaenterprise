@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,19 +42,21 @@ public class AccountDefenderAssessment {
     String projectId = "project-id";
 
     // recaptchaSiteKey: Site key obtained by registering a domain/app to use recaptcha
-    //    * services.
+    // services.
     String recaptchaSiteKey = "recaptcha-site-key";
 
     // token: The token obtained from the client on passing the recaptchaSiteKey.
+    // To get the token, integrate the recaptchaSiteKey with frontend. See,
+    // https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages#frontend_integration_score
     String token = "recaptcha-token";
 
-    // recaptchaAction: Action name corresponding to the token.
+    // recaptchaAction: The action name corresponding to the token.
     String recaptchaAction = "recaptcha-action";
 
-    // Unique id of the customer (id can be email, customer id, etc.,).
+    // Unique ID of the customer, such as email, customer ID, etc.
     String uniqueCustomerId = "default" + UUID.randomUUID().toString().split("-")[0];
 
-    // Hash the unique customer id using HMAC SHA-256.
+    // Hash the unique customer ID using HMAC SHA-256.
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
     byte[] hashBytes = digest.digest(uniqueCustomerId.getBytes(StandardCharsets.UTF_8));
     ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
@@ -63,9 +65,9 @@ public class AccountDefenderAssessment {
   }
 
   /**
-   * This assessment detects account takeovers. Input -> Pass in the hashed account id. Result ->
-   * Tells if the action represents an account takeover.
-   * You can optionally take actions (to trigger an MFA) based on the result.
+   * This assessment detects account takeovers. See, https://cloud.google.com/recaptcha-enterprise/docs/account-takeovers
+   * The input is the hashed account id. Result tells if the action represents an account takeover.
+   * You can optionally trigger a Multi-Factor Authentication based on the result.
    */
   public static void accountDefenderAssessment(
       String projectId, String recaptchaSiteKey, String token, String recaptchaAction,
@@ -114,10 +116,10 @@ public class AccountDefenderAssessment {
       List<AccountDefenderLabel> defenderResult = response.getAccountDefenderAssessment()
           .getLabelsList();
       // Based on the result, can you choose next steps.
-      // If the 'defenderResult' field is empty, it indicates that account defender did not have anything to add to the score.
+      // If the 'defenderResult' field is empty, it indicates that Account Defender did not have anything to add to the score.
       // Few result labels: ACCOUNT_DEFENDER_LABEL_UNSPECIFIED, PROFILE_MATCH,
       // SUSPICIOUS_LOGIN_ACTIVITY, SUSPICIOUS_ACCOUNT_CREATION, RELATED_ACCOUNTS_NUMBER_HIGH.
-      // For more info on interpreting the assessment, see: https://cloud.google.com/recaptcha-enterprise/docs/account-defender#interpret-assessment-details
+      // For more information on interpreting the assessment, see: https://cloud.google.com/recaptcha-enterprise/docs/account-defender#interpret-assessment-details
       System.out.println("Account Defender Assessment Result: " + defenderResult);
     }
   }
