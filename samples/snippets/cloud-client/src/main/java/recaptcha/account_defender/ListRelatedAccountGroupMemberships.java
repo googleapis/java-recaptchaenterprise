@@ -36,21 +36,21 @@ public class ListRelatedAccountGroupMemberships {
     listRelatedAccountGroupMemberships(projectId, relatedAccountGroup);
   }
 
-  /**
-   * Given a group name, list memberships in the group.
-   */
-  public static void listRelatedAccountGroupMemberships(String projectId,
-      String relatedAccountGroup) throws IOException {
+  /** Given a group name, list memberships in the group. */
+  public static void listRelatedAccountGroupMemberships(
+      String projectId, String relatedAccountGroup) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Construct the request.
-      ListRelatedAccountGroupMembershipsRequest request = ListRelatedAccountGroupMembershipsRequest.newBuilder()
-          .setParent(
-              String.format("projects/%s/relatedaccountgroups/%s", projectId, relatedAccountGroup))
-          .build();
+      ListRelatedAccountGroupMembershipsRequest request =
+          ListRelatedAccountGroupMembershipsRequest.newBuilder()
+              .setParent(
+                  String.format(
+                      "projects/%s/relatedaccountgroups/%s", projectId, relatedAccountGroup))
+              .build();
 
-      for (RelatedAccountGroupMembership relatedAccountGroupMembership : client.listRelatedAccountGroupMemberships(
-          request).iterateAll()) {
+      for (RelatedAccountGroupMembership relatedAccountGroupMembership :
+          client.listRelatedAccountGroupMemberships(request).iterateAll()) {
         System.out.println(relatedAccountGroupMembership.getName());
       }
       System.out.println("Finished listing related account group memberships.");

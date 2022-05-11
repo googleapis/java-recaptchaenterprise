@@ -25,7 +25,6 @@ import java.io.IOException;
 
 public class ListRelatedAccountGroups {
 
-
   public static void main(String[] args) throws IOException {
     // TODO(developer): Replace these variables before running the sample.
     // projectId : Google Cloud Project Id.
@@ -35,13 +34,11 @@ public class ListRelatedAccountGroups {
   }
 
   // List related account groups in the project.
-  public static void listRelatedAccountGroups(String projectId)
-      throws IOException {
+  public static void listRelatedAccountGroups(String projectId) throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
-      ListRelatedAccountGroupsRequest request = ListRelatedAccountGroupsRequest.newBuilder()
-          .setParent("projects/" + projectId)
-          .build();
+      ListRelatedAccountGroupsRequest request =
+          ListRelatedAccountGroupsRequest.newBuilder().setParent("projects/" + projectId).build();
 
       System.out.println("Listing related account groups..");
       for (RelatedAccountGroup group : client.listRelatedAccountGroups(request).iterateAll()) {

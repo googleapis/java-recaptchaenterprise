@@ -60,6 +60,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.util.UriComponentsBuilder;
 import recaptcha.AnnotateAssessment;
+import recaptcha.GetMetrics;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @EnableAutoConfiguration
@@ -82,7 +83,7 @@ public class SnippetsIT {
   }
 
   @BeforeClass
-  public static void setUp() throws IOException, InterruptedException, JSONException {
+  public static void setUp() throws IOException, InterruptedException {
     requireEnvVar("GOOGLE_APPLICATION_CREDENTIALS");
     requireEnvVar("GOOGLE_CLOUD_PROJECT");
 
@@ -178,8 +179,10 @@ public class SnippetsIT {
     String testURL = "http://localhost:" + randomServerPort + "/";
     // Create a random SHA-256 Hashed account id.
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
-    byte[] hashBytes = digest.digest(
-        ("default-" + UUID.randomUUID().toString().split("-")[0]).getBytes(StandardCharsets.UTF_8));
+    byte[] hashBytes =
+        digest.digest(
+            ("default-" + UUID.randomUUID().toString().split("-")[0])
+                .getBytes(StandardCharsets.UTF_8));
     ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
 
     // Create the assessment.
@@ -189,8 +192,8 @@ public class SnippetsIT {
     assertThat(assessmentName).isNotEmpty();
 
     // Annotate the assessment.
-    AnnotateAccountDefenderAssessment.annotateAssessment(PROJECT_ID, assessmentName,
-        hashedAccountId);
+    AnnotateAccountDefenderAssessment.annotateAssessment(
+        PROJECT_ID, assessmentName, hashedAccountId);
     assertThat(stdOut.toString()).contains("Annotated response sent successfully ! ");
 
     // NOTE: The below assert statements have no significant effect,
@@ -208,15 +211,21 @@ public class SnippetsIT {
     assertThat(stdOut.toString()).contains("Finished listing related account group memberships.");
 
     // Search related group memberships for a hashed account id.
-    SearchRelatedAccountGroupMemberships.searchRelatedAccountGroupMemberships(PROJECT_ID,
-        hashedAccountId);
-    assertThat(stdOut.toString()).contains(
-        String.format("Finished searching related account group memberships for %s",
-            hashedAccountId));
+    SearchRelatedAccountGroupMemberships.searchRelatedAccountGroupMemberships(
+        PROJECT_ID, hashedAccountId);
+    assertThat(stdOut.toString())
+        .contains(
+            String.format(
+                "Finished searching related account group memberships for %s", hashedAccountId));
   }
 
+  public void testGetMetrics() throws IOException {
+    GetMetrics.getMetrics(PROJECT_ID, RECAPTCHA_SITE_KEY_1);
+    assertThat(stdOut.toString())
+        .contains("Retrieved the bucket count for score based key: " + RECAPTCHA_SITE_KEY_1);
+  }
 
-  public JSONObject createAssessment(String testURL, ByteString hashedAccountId)
+  public JSONObject createAssessment(String testURL)
       throws IOException, JSONException, InterruptedException {
 
     // Setup the automated browser test and retrieve the token and action.
