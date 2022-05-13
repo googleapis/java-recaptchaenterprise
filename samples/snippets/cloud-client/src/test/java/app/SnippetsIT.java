@@ -198,7 +198,7 @@ public class SnippetsIT {
 
     // NOTE: The below assert statements have no significant effect,
     // since reCAPTCHA doesn't generate response.
-    // To generate response, reCAPTCHA needs a thresold number of unique customer id points
+    // To generate response, reCAPTCHA needs a threshold number of unique userIdentifier points
     // to cluster results.
     // Hence, re-running the test 'n' times is currently out of scope.
 

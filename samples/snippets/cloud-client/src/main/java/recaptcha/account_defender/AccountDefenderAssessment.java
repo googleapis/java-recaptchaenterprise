@@ -54,11 +54,11 @@ public class AccountDefenderAssessment {
     String recaptchaAction = "recaptcha-action";
 
     // Unique ID of the customer, such as email, customer ID, etc.
-    String uniqueCustomerId = "default" + UUID.randomUUID().toString().split("-")[0];
+    String userIdentifier  = "default" + UUID.randomUUID().toString().split("-")[0];
 
     // Hash the unique customer ID using HMAC SHA-256.
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
-    byte[] hashBytes = digest.digest(uniqueCustomerId.getBytes(StandardCharsets.UTF_8));
+    byte[] hashBytes = digest.digest(userIdentifier.getBytes(StandardCharsets.UTF_8));
     ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
 
     accountDefenderAssessment(projectId, recaptchaSiteKey, token, recaptchaAction, hashedAccountId);
