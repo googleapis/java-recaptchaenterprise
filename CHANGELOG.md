@@ -1,5 +1,53 @@
 # Changelog
 
+### [2.6.1](https://github.com/googleapis/java-recaptchaenterprise/compare/v2.6.0...v2.6.1) (2022-05-25)
+
+
+### Dependencies
+
+* update dependency io.github.bonigarcia:webdrivermanager to v5.2.0 ([#802](https://github.com/googleapis/java-recaptchaenterprise/issues/802)) ([29f3304](https://github.com/googleapis/java-recaptchaenterprise/commit/29f33041b66aa25287f293f1ee82df46d9419fb2))
+
+## [2.6.0](https://github.com/googleapis/java-recaptchaenterprise/compare/v2.5.0...v2.6.0) (2022-05-19)
+
+
+### Features
+
+* add build scripts for native image testing in Java 17 ([#1440](https://github.com/googleapis/java-recaptchaenterprise/issues/1440)) ([#799](https://github.com/googleapis/java-recaptchaenterprise/issues/799)) ([dddabca](https://github.com/googleapis/java-recaptchaenterprise/commit/dddabcaec703a727c24c249d62eae5616f2e5d6b))
+
+
+### Documentation
+
+* **samples:** added account defender samples and tests ([#771](https://github.com/googleapis/java-recaptchaenterprise/issues/771)) ([eca03a1](https://github.com/googleapis/java-recaptchaenterprise/commit/eca03a1d5775c4545e144180fe7bc0501410c31b))
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v2.12.0 ([#795](https://github.com/googleapis/java-recaptchaenterprise/issues/795)) ([fcdd308](https://github.com/googleapis/java-recaptchaenterprise/commit/fcdd30838e21409528af15b924fdda5964ae4a3c))
+* update dependency org.springframework.boot:spring-boot-starter-test to v2.7.0 ([#796](https://github.com/googleapis/java-recaptchaenterprise/issues/796)) ([2aa3477](https://github.com/googleapis/java-recaptchaenterprise/commit/2aa34772326e3b6ffe9a1132241663945ebbf61b))
+* update dependency org.springframework.boot:spring-boot-starter-thymeleaf to v2.7.0 ([#797](https://github.com/googleapis/java-recaptchaenterprise/issues/797)) ([2aac201](https://github.com/googleapis/java-recaptchaenterprise/commit/2aac201053190d271e1e9abb2a647d41162c218d))
+* update dependency org.springframework.boot:spring-boot-starter-web to v2.7.0 ([#798](https://github.com/googleapis/java-recaptchaenterprise/issues/798)) ([abfb369](https://github.com/googleapis/java-recaptchaenterprise/commit/abfb369364daa5086eedc20cf0e4ff8dccb6f8a8))
+
+## [2.5.0](https://github.com/googleapis/java-recaptchaenterprise/compare/v2.4.11...v2.5.0) (2022-05-04)
+
+
+### Features
+
+* introduced Reason, PasswordLeakVerification, AccountDefenderAssessment ([6b0f9f1](https://github.com/googleapis/java-recaptchaenterprise/commit/6b0f9f1d4a1624f23504cd3655f6691d5bc00c1e))
+
+
+### Bug Fixes
+
+* remove key management API ([#788](https://github.com/googleapis/java-recaptchaenterprise/issues/788)) ([6b0f9f1](https://github.com/googleapis/java-recaptchaenterprise/commit/6b0f9f1d4a1624f23504cd3655f6691d5bc00c1e))
+
+
+### Dependencies
+
+* update dependency org.seleniumhq.selenium:selenium-chrome-driver to v4.1.4 ([#784](https://github.com/googleapis/java-recaptchaenterprise/issues/784)) ([58c4d6d](https://github.com/googleapis/java-recaptchaenterprise/commit/58c4d6dd4f19d9c3dd2ab1a6cad909718db47b28))
+* update dependency org.seleniumhq.selenium:selenium-java to v4.1.4 ([#785](https://github.com/googleapis/java-recaptchaenterprise/issues/785)) ([b448e5b](https://github.com/googleapis/java-recaptchaenterprise/commit/b448e5b53f0a9d9027dc0ff9ec08d5b310388f88))
+* update dependency org.springframework.boot:spring-boot-starter-test to v2.6.7 ([#778](https://github.com/googleapis/java-recaptchaenterprise/issues/778)) ([568a069](https://github.com/googleapis/java-recaptchaenterprise/commit/568a0698f6026480e0650484e6e99399c3d85c4b))
+* update dependency org.springframework.boot:spring-boot-starter-thymeleaf to v2.6.7 ([#779](https://github.com/googleapis/java-recaptchaenterprise/issues/779)) ([3f25216](https://github.com/googleapis/java-recaptchaenterprise/commit/3f25216c3de83da6eba98a1e550d72946f022d7d))
+* update dependency org.springframework.boot:spring-boot-starter-web to v2.6.7 ([#780](https://github.com/googleapis/java-recaptchaenterprise/issues/780)) ([34f2b81](https://github.com/googleapis/java-recaptchaenterprise/commit/34f2b81a040564c9cb09359617b89f9696e99fe1))
+
 ### [2.4.11](https://github.com/googleapis/java-recaptchaenterprise/compare/v2.4.10...v2.4.11) (2022-04-15)
 
 
