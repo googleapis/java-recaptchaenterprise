@@ -55,7 +55,6 @@ public class CreatePasswordLeakAssessment {
     checkPasswordLeak(projectID, recaptchaSiteKey, token, recaptchaAction);
   }
 
-
   /*
    * Detect password leaks and breached credentials to prevent account takeovers (ATOs)
    * and credential stuffing attacks.
@@ -84,8 +83,8 @@ public class CreatePasswordLeakAssessment {
    * 5. Check if the decrypted credentials are present in 'credentials.getEncryptedLeakMatchPrefixesList()'.
    * 6. If there is a match, that indicates a credential breach.
    */
-  public static void checkPasswordLeak(String projectID, String recaptchaSiteKey,
-      String token, String recaptchaAction)
+  public static void checkPasswordLeak(
+      String projectID, String recaptchaSiteKey, String token, String recaptchaAction)
       throws ExecutionException, InterruptedException, IOException {
     // Set the username and password to be checked.
     String username = "username";
@@ -103,19 +102,29 @@ public class CreatePasswordLeakAssessment {
 
     // Pass the credentials to the createPasswordLeakAssessment() to get back
     // the matching database entry for the hash prefix.
-    PrivatePasswordLeakVerification credentials = createPasswordLeakAssessment(projectID,
-        recaptchaSiteKey,
-        token, recaptchaAction, lookupHashPrefix, encryptedUserCredentialsHash);
+    PrivatePasswordLeakVerification credentials =
+        createPasswordLeakAssessment(
+            projectID,
+            recaptchaSiteKey,
+            token,
+            recaptchaAction,
+            lookupHashPrefix,
+            encryptedUserCredentialsHash);
 
     // Convert to appropriate input format.
-    List<byte[]> leakMatchPrefixes = credentials.getEncryptedLeakMatchPrefixesList()
-        .stream()
-        .map(ByteString::toByteArray)
-        .collect(Collectors.toList());
+    List<byte[]> leakMatchPrefixes =
+        credentials.getEncryptedLeakMatchPrefixesList().stream()
+            .map(ByteString::toByteArray)
+            .collect(Collectors.toList());
 
     // Verify if the encrypted credentials are present in the obtained match list.
-    PasswordCheckResult result = passwordLeak.verify(verification,
-        credentials.getReencryptedUserCredentialsHash().toByteArray(), leakMatchPrefixes).get();
+    PasswordCheckResult result =
+        passwordLeak
+            .verify(
+                verification,
+                credentials.getReencryptedUserCredentialsHash().toByteArray(),
+                leakMatchPrefixes)
+            .get();
 
     // Check if the credential is leaked.
     boolean isLeaked = result.areCredentialsLeaked();
@@ -127,34 +136,36 @@ public class CreatePasswordLeakAssessment {
   // reencryptedUserCredentialsHash and credential breach database
   // whose prefix matches the lookupHashPrefix.
   private static PrivatePasswordLeakVerification createPasswordLeakAssessment(
-      String projectID, String recaptchaSiteKey, String token, String recaptchaAction,
-      byte[] lookupHashPrefix, byte[] encryptedUserCredentialsHash)
+      String projectID,
+      String recaptchaSiteKey,
+      String token,
+      String recaptchaAction,
+      byte[] lookupHashPrefix,
+      byte[] encryptedUserCredentialsHash)
       throws IOException {
     try (RecaptchaEnterpriseServiceClient client = RecaptchaEnterpriseServiceClient.create()) {
 
       // Set the properties of the event to be tracked.
-      Event event = Event.newBuilder()
-          .setSiteKey(recaptchaSiteKey)
-          .setToken(token)
-          .build();
+      Event event = Event.newBuilder().setSiteKey(recaptchaSiteKey).setToken(token).build();
 
       // Set the hashprefix and credentials hash.
       // Setting this will trigger the Password leak protection.
       PrivatePasswordLeakVerification passwordLeakVerification =
           PrivatePasswordLeakVerification.newBuilder()
-          .setLookupHashPrefix(ByteString.copyFrom(lookupHashPrefix))
-          .setEncryptedUserCredentialsHash(ByteString.copyFrom(encryptedUserCredentialsHash))
-          .build();
+              .setLookupHashPrefix(ByteString.copyFrom(lookupHashPrefix))
+              .setEncryptedUserCredentialsHash(ByteString.copyFrom(encryptedUserCredentialsHash))
+              .build();
 
       // Build the assessment request.
       CreateAssessmentRequest createAssessmentRequest =
           CreateAssessmentRequest.newBuilder()
               .setParent(String.format("projects/%s", projectID))
-              .setAssessment(Assessment.newBuilder()
-                  .setEvent(event)
-                  // Set request for Password leak verification.
-                  .setPrivatePasswordLeakVerification(passwordLeakVerification)
-                  .build())
+              .setAssessment(
+                  Assessment.newBuilder()
+                      .setEvent(event)
+                      // Set request for Password leak verification.
+                      .setPrivatePasswordLeakVerification(passwordLeakVerification)
+                      .build())
               .build();
 
       // Send the create assessment request.

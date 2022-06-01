@@ -72,17 +72,17 @@ public class SnippetsIT {
   private static String RECAPTCHA_SITE_KEY_1 = "recaptcha-site-key1";
   private static String RECAPTCHA_SITE_KEY_2 = "recaptcha-site-key2";
   private static WebDriver browser;
-  @LocalServerPort
-  private int randomServerPort;
+  @LocalServerPort private int randomServerPort;
   private ByteArrayOutputStream stdOut;
 
   @Test
   public void testCreateAnnotateAssessment()
-      throws JSONException, IOException, InterruptedException, NoSuchAlgorithmException, ExecutionException {
+      throws JSONException, IOException, InterruptedException, NoSuchAlgorithmException,
+          ExecutionException {
     // Create an assessment.
     String testURL = "http://localhost:" + randomServerPort + "/";
-    JSONObject createAssessmentResult = createAssessment(testURL, ByteString.EMPTY,
-        AssessmentType.ASSESSMENT);
+    JSONObject createAssessmentResult =
+        createAssessment(testURL, ByteString.EMPTY, AssessmentType.ASSESSMENT);
     String assessmentName = createAssessmentResult.getString("assessmentName");
     // Verify that the assessment name has been modified post the assessment creation.
     assertThat(assessmentName).isNotEmpty();
@@ -176,7 +176,8 @@ public class SnippetsIT {
 
   @Test
   public void testCreateAnnotateAccountDefender()
-      throws JSONException, IOException, InterruptedException, NoSuchAlgorithmException, ExecutionException {
+      throws JSONException, IOException, InterruptedException, NoSuchAlgorithmException,
+          ExecutionException {
 
     String testURL = "http://localhost:" + randomServerPort + "/";
     // Create a random SHA-256 Hashed account id.
@@ -188,8 +189,8 @@ public class SnippetsIT {
     ByteString hashedAccountId = ByteString.copyFrom(hashBytes);
 
     // Create the assessment.
-    JSONObject createAssessmentResult = createAssessment(testURL, hashedAccountId,
-        AssessmentType.ACCOUNT_DEFENDER);
+    JSONObject createAssessmentResult =
+        createAssessment(testURL, hashedAccountId, AssessmentType.ACCOUNT_DEFENDER);
     String assessmentName = createAssessmentResult.getString("assessmentName");
     // Verify that the assessment name has been modified post the assessment creation.
     assertThat(assessmentName).isNotEmpty();
@@ -237,8 +238,8 @@ public class SnippetsIT {
     assertThat(stdOut.toString()).contains("Is Credential leaked: ");
   }
 
-  public JSONObject createAssessment(String testURL, ByteString hashedAccountId,
-      AssessmentType assessmentType)
+  public JSONObject createAssessment(
+      String testURL, ByteString hashedAccountId, AssessmentType assessmentType)
       throws IOException, JSONException, InterruptedException, ExecutionException {
 
     // Setup the automated browser test and retrieve the token and action.
@@ -297,8 +298,7 @@ public class SnippetsIT {
     ACCOUNT_DEFENDER,
     PASSWORD_LEAK;
 
-    AssessmentType() {
-    }
+    AssessmentType() {}
   }
 
   public JSONObject initiateBrowserTest(String testURL)
