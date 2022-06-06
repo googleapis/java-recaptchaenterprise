@@ -26,27 +26,32 @@ function assessRecaptcha(obj, event) {
 
 
 function httpRequest(token, action, sitekey) {
-  var request = new XMLHttpRequest();
-  request.onreadystatechange= function () {
-    if (request.readyState === 4) {
-      if (request.status === 0 || (request.status >= 200 && request.status < 400)) {
-        json_data = JSON.parse(request.response);
-        console.log(json_data);
-        if (json_data["success"] === "true") {
-          document.getElementById("scoreButton").innerText = json_data["data"]["score"];
-          // document.getElementById("recaptcha_form").submit();
-        }
-      } else {
-        addMessage("Got Internal error...");
-        console.log(json_data["data"]["error_msg"]);
+  $.ajax({
+    url: '/create_assessment',
+    data: JSON.stringify({
+      "recaptcha_cred": {
+        "token": token,
+        "action": action,
+        "sitekey": sitekey
       }
+    }),
+    type: 'POST',
+    contentType: 'application/json; charset=utf-8',
+    success: function (data, textStatus, xhr) {
+      var json_data = JSON.parse(JSON.stringify(data));
+      console.log(json_data["success"]);
+      if (json_data["success"] === "true") {
+        document.getElementById(
+            "scoreButton").innerText = json_data["data"]["score"];
+        // document.getElementById("recaptcha_form").submit();
+      }
+    },
+    error: function (data, textStatus, xhr) {
+      var json_data = JSON.parse(JSON.stringify(data));
+      addMessage("Got Internal error...");
+      console.log(json_data["data"]["error_msg"]);
     }
-  };
-  var url = "/create_assessment"
-  var json_data = JSON.stringify({"recaptcha_cred":{ "token": token, "action": action, "sitekey": sitekey}});
-  request.open("POST", url)
-  request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  request.send(json_data);
+  })
 }
 
 var verifyCallback = function(token) {

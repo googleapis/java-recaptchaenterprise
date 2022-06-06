@@ -34,32 +34,27 @@ public class Recaptcha {
       AssessmentResponse response = new CreateAssessment().createAssessment(projectId, recaptchaSiteKey, recaptchaToken, recaptchaAction);
 
       if (response == null) {
-        JSONObject root = new JSONObject();
-        root.put("error_msg", "Something happened! Please try again");
-        root.put("success", "false");
-        return root;
+        return new JSONObject()
+            .put("error_msg", "Something happened! Please try again")
+            .put("success", "false");
       }
 
       if (response.recaptchaScore < sampleThresholdScore) {
-        verdict = "human";
-      }else {
         verdict = "Not a human";
+      } else {
+        verdict = "human";
       }
 
-      JSONObject result = new JSONObject();
-      result.put("score", response.recaptchaScore);
-      result.put("verdict", verdict);
+      JSONObject result = new JSONObject()
+          .put("score", response.recaptchaScore)
+          .put("verdict", verdict);
 
-      JSONObject root = new JSONObject();
-      root.put("data", result);
-      root.put("success", "true");
-      return root;
+      return new JSONObject().put("data", result).put("success", "true");
 
     } catch (IOException e) {
-      JSONObject root = new JSONObject();
-      root.put("error_msg", "Something happened! Please try again");
-      root.put("success", "false");
-      return root;
+      return new JSONObject()
+          .put("error_msg", "Something happened! Please try again")
+          .put("success", "false");
     }
 
   }
