@@ -195,7 +195,7 @@ public class CreatePasswordLeakAssessment {
     // Check if the token is valid.
     if (!tokenProperties.getValid()) {
       System.out.println(
-          "The Account Defender Assessment call failed because the token was: "
+          "The Password check call failed because the token was: "
               + tokenProperties.getInvalidReason().name());
       return false;
     }
