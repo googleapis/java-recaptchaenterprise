@@ -247,31 +247,34 @@ public class SnippetsIT {
 
     // Send the token for analysis. The analysis score ranges from 0.0 to 1.0
     switch (assessmentType) {
-      case ACCOUNT_DEFENDER: {
-        AccountDefenderAssessment.accountDefenderAssessment(
-            PROJECT_ID,
-            RECAPTCHA_SITE_KEY_1,
-            tokenActionPair.getString("token"),
-            tokenActionPair.getString("action"),
-            hashedAccountId);
-        break;
-      }
-      case ASSESSMENT: {
-        recaptcha.CreateAssessment.createAssessment(
-            PROJECT_ID,
-            RECAPTCHA_SITE_KEY_1,
-            tokenActionPair.getString("token"),
-            tokenActionPair.getString("action"));
-        break;
-      }
-      case PASSWORD_LEAK: {
-        passwordleak.CreatePasswordLeakAssessment.checkPasswordLeak(
-            PROJECT_ID,
-            RECAPTCHA_SITE_KEY_1,
-            tokenActionPair.getString("token"),
-            tokenActionPair.getString("action"));
-        break;
-      }
+      case ACCOUNT_DEFENDER:
+        {
+          AccountDefenderAssessment.accountDefenderAssessment(
+              PROJECT_ID,
+              RECAPTCHA_SITE_KEY_1,
+              tokenActionPair.getString("token"),
+              tokenActionPair.getString("action"),
+              hashedAccountId);
+          break;
+        }
+      case ASSESSMENT:
+        {
+          recaptcha.CreateAssessment.createAssessment(
+              PROJECT_ID,
+              RECAPTCHA_SITE_KEY_1,
+              tokenActionPair.getString("token"),
+              tokenActionPair.getString("action"));
+          break;
+        }
+      case PASSWORD_LEAK:
+        {
+          passwordleak.CreatePasswordLeakAssessment.checkPasswordLeak(
+              PROJECT_ID,
+              RECAPTCHA_SITE_KEY_1,
+              tokenActionPair.getString("token"),
+              tokenActionPair.getString("action"));
+          break;
+        }
     }
 
     // Assert the response.
