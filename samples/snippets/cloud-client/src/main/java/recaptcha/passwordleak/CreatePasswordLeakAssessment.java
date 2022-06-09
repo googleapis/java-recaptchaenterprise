@@ -60,6 +60,7 @@ public class CreatePasswordLeakAssessment {
    * and credential stuffing attacks.
    * For more information, see: https://cloud.google.com/recaptcha-enterprise/docs/getting-started
    * and https://security.googleblog.com/2019/02/protect-your-accounts-from-data.html
+
    * Steps:
    * 1. Use the 'createVerification' method to hash and Encrypt the hashed username and password.
    * 2. Send the hash prefix (2-byte) and the encrypted credentials to create the assessment.
@@ -72,7 +73,7 @@ public class CreatePasswordLeakAssessment {
    * To perform hashing, encryption and verification (steps 1, 2 and 4),
    * reCAPTCHA Enterprise provides a helper library in Java.
    * See, https://github.com/GoogleCloudPlatform/java-recaptcha-password-check-helpers
-   *
+
    * If you want to extend this behavior to your own implementation/ languages,
    * make sure to perform the following steps:
    * 1. Hash the credentials (First 2 bytes of the result is the 'lookupHashPrefix')
