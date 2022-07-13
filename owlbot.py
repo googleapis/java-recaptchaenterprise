@@ -21,7 +21,4 @@ for library in s.get_staging_dirs():
     s.move(library)
 
 s.remove_staging_dirs()
-java.common_templates(excludes=[
-    # todo: remove once confirmed windows test fix works
-    '.github/workflows/ci.yaml'
-])
+java.common_templates()
