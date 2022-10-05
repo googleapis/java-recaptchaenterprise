@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.12](https://github.com/googleapis/java-recaptchaenterprise/compare/v3.0.11...v3.0.12) (2022-10-05)
+
+
+### Bug Fixes
+
+* update protobuf to v3.21.7 ([c0158b9](https://github.com/googleapis/java-recaptchaenterprise/commit/c0158b992bc86c2bd87553d3d56a41e9416f76af))
+
 ## [3.0.11](https://github.com/googleapis/java-recaptchaenterprise/compare/v3.0.10...v3.0.11) (2022-10-03)
 
 
