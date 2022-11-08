@@ -16,35 +16,36 @@
 
 package com.google.cloud.recaptchaenterprise.v1.samples;
 
-// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
-import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceSettings;
-import java.time.Duration;
+// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_ListKeys_sync]
+import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
+import com.google.recaptchaenterprise.v1.Key;
+import com.google.recaptchaenterprise.v1.ListKeysRequest;
+import com.google.recaptchaenterprise.v1.ProjectName;
 
-public class SyncCreateAssessment {
+public class SyncListKeys {
 
   public static void main(String[] args) throws Exception {
-    syncCreateAssessment();
+    syncListKeys();
   }
 
-  public static void syncCreateAssessment() throws Exception {
+  public static void syncListKeys() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    RecaptchaEnterpriseServiceSettings.Builder recaptchaEnterpriseServiceSettingsBuilder =
-        RecaptchaEnterpriseServiceSettings.newBuilder();
-    recaptchaEnterpriseServiceSettingsBuilder
-        .createAssessmentSettings()
-        .setRetrySettings(
-            recaptchaEnterpriseServiceSettingsBuilder
-                .createAssessmentSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    RecaptchaEnterpriseServiceSettings recaptchaEnterpriseServiceSettings =
-        recaptchaEnterpriseServiceSettingsBuilder.build();
+    try (RecaptchaEnterpriseServiceClient recaptchaEnterpriseServiceClient =
+        RecaptchaEnterpriseServiceClient.create()) {
+      ListKeysRequest request =
+          ListKeysRequest.newBuilder()
+              .setParent(ProjectName.of("[PROJECT]").toString())
+              .setPageSize(883849137)
+              .setPageToken("pageToken873572522")
+              .build();
+      for (Key element : recaptchaEnterpriseServiceClient.listKeys(request).iterateAll()) {
+        // doThingsWith(element);
+      }
+    }
   }
 }
-// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
+// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_ListKeys_sync]

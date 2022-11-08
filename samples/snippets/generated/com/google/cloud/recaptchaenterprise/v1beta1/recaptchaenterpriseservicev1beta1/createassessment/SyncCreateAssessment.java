@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.cloud.recaptchaenterprise.v1.samples;
+package com.google.cloud.recaptchaenterprise.v1beta1.samples;
 
-// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
-import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceSettings;
-import java.time.Duration;
+// [START recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1_CreateAssessment_sync]
+import com.google.cloud.recaptchaenterprise.v1beta1.RecaptchaEnterpriseServiceV1Beta1Client;
+import com.google.recaptchaenterprise.v1beta1.Assessment;
+import com.google.recaptchaenterprise.v1beta1.CreateAssessmentRequest;
+import com.google.recaptchaenterprise.v1beta1.ProjectName;
 
 public class SyncCreateAssessment {
 
@@ -32,19 +34,15 @@ public class SyncCreateAssessment {
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    RecaptchaEnterpriseServiceSettings.Builder recaptchaEnterpriseServiceSettingsBuilder =
-        RecaptchaEnterpriseServiceSettings.newBuilder();
-    recaptchaEnterpriseServiceSettingsBuilder
-        .createAssessmentSettings()
-        .setRetrySettings(
-            recaptchaEnterpriseServiceSettingsBuilder
-                .createAssessmentSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    RecaptchaEnterpriseServiceSettings recaptchaEnterpriseServiceSettings =
-        recaptchaEnterpriseServiceSettingsBuilder.build();
+    try (RecaptchaEnterpriseServiceV1Beta1Client recaptchaEnterpriseServiceV1Beta1Client =
+        RecaptchaEnterpriseServiceV1Beta1Client.create()) {
+      CreateAssessmentRequest request =
+          CreateAssessmentRequest.newBuilder()
+              .setParent(ProjectName.of("[PROJECT]").toString())
+              .setAssessment(Assessment.newBuilder().build())
+              .build();
+      Assessment response = recaptchaEnterpriseServiceV1Beta1Client.createAssessment(request);
+    }
   }
 }
-// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
+// [END recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1_CreateAssessment_sync]

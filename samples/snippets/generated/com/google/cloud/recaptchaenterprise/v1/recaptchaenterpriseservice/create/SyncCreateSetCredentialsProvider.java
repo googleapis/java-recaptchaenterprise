@@ -16,35 +16,30 @@
 
 package com.google.cloud.recaptchaenterprise.v1.samples;
 
-// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
+// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_Create_SetCredentialsProvider_sync]
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
 import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceSettings;
-import java.time.Duration;
+import com.google.cloud.recaptchaenterprise.v1.myCredentials;
 
-public class SyncCreateAssessment {
+public class SyncCreateSetCredentialsProvider {
 
   public static void main(String[] args) throws Exception {
-    syncCreateAssessment();
+    syncCreateSetCredentialsProvider();
   }
 
-  public static void syncCreateAssessment() throws Exception {
+  public static void syncCreateSetCredentialsProvider() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    RecaptchaEnterpriseServiceSettings.Builder recaptchaEnterpriseServiceSettingsBuilder =
-        RecaptchaEnterpriseServiceSettings.newBuilder();
-    recaptchaEnterpriseServiceSettingsBuilder
-        .createAssessmentSettings()
-        .setRetrySettings(
-            recaptchaEnterpriseServiceSettingsBuilder
-                .createAssessmentSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
     RecaptchaEnterpriseServiceSettings recaptchaEnterpriseServiceSettings =
-        recaptchaEnterpriseServiceSettingsBuilder.build();
+        RecaptchaEnterpriseServiceSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+            .build();
+    RecaptchaEnterpriseServiceClient recaptchaEnterpriseServiceClient =
+        RecaptchaEnterpriseServiceClient.create(recaptchaEnterpriseServiceSettings);
   }
 }
-// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
+// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_Create_SetCredentialsProvider_sync]

@@ -16,36 +16,26 @@
 
 package com.google.cloud.recaptchaenterprise.v1beta1.samples;
 
-// [START recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1Settings_CreateAssessment_sync]
+// [START recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1_Create_SetCredentialsProvider1_sync]
+import com.google.cloud.recaptchaenterprise.v1beta1.RecaptchaEnterpriseServiceV1Beta1Client;
 import com.google.cloud.recaptchaenterprise.v1beta1.RecaptchaEnterpriseServiceV1Beta1Settings;
-import java.time.Duration;
 
-public class SyncCreateAssessment {
+public class SyncCreateSetCredentialsProvider1 {
 
   public static void main(String[] args) throws Exception {
-    syncCreateAssessment();
+    syncCreateSetCredentialsProvider1();
   }
 
-  public static void syncCreateAssessment() throws Exception {
+  public static void syncCreateSetCredentialsProvider1() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    RecaptchaEnterpriseServiceV1Beta1Settings.Builder
-        recaptchaEnterpriseServiceV1Beta1SettingsBuilder =
-            RecaptchaEnterpriseServiceV1Beta1Settings.newBuilder();
-    recaptchaEnterpriseServiceV1Beta1SettingsBuilder
-        .createAssessmentSettings()
-        .setRetrySettings(
-            recaptchaEnterpriseServiceV1Beta1SettingsBuilder
-                .createAssessmentSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
     RecaptchaEnterpriseServiceV1Beta1Settings recaptchaEnterpriseServiceV1Beta1Settings =
-        recaptchaEnterpriseServiceV1Beta1SettingsBuilder.build();
+        RecaptchaEnterpriseServiceV1Beta1Settings.newHttpJsonBuilder().build();
+    RecaptchaEnterpriseServiceV1Beta1Client recaptchaEnterpriseServiceV1Beta1Client =
+        RecaptchaEnterpriseServiceV1Beta1Client.create(recaptchaEnterpriseServiceV1Beta1Settings);
   }
 }
-// [END recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1Settings_CreateAssessment_sync]
+// [END recaptchaenterprise_v1beta1_generated_RecaptchaEnterpriseServiceV1Beta1_Create_SetCredentialsProvider1_sync]

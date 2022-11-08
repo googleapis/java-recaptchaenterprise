@@ -16,35 +16,36 @@
 
 package com.google.cloud.recaptchaenterprise.v1.samples;
 
-// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
-import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceSettings;
-import java.time.Duration;
+// [START recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_DeleteKey_async]
+import com.google.api.core.ApiFuture;
+import com.google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseServiceClient;
+import com.google.protobuf.Empty;
+import com.google.recaptchaenterprise.v1.DeleteKeyRequest;
+import com.google.recaptchaenterprise.v1.KeyName;
 
-public class SyncCreateAssessment {
+public class AsyncDeleteKey {
 
   public static void main(String[] args) throws Exception {
-    syncCreateAssessment();
+    asyncDeleteKey();
   }
 
-  public static void syncCreateAssessment() throws Exception {
+  public static void asyncDeleteKey() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    RecaptchaEnterpriseServiceSettings.Builder recaptchaEnterpriseServiceSettingsBuilder =
-        RecaptchaEnterpriseServiceSettings.newBuilder();
-    recaptchaEnterpriseServiceSettingsBuilder
-        .createAssessmentSettings()
-        .setRetrySettings(
-            recaptchaEnterpriseServiceSettingsBuilder
-                .createAssessmentSettings()
-                .getRetrySettings()
-                .toBuilder()
-                .setTotalTimeout(Duration.ofSeconds(30))
-                .build());
-    RecaptchaEnterpriseServiceSettings recaptchaEnterpriseServiceSettings =
-        recaptchaEnterpriseServiceSettingsBuilder.build();
+    try (RecaptchaEnterpriseServiceClient recaptchaEnterpriseServiceClient =
+        RecaptchaEnterpriseServiceClient.create()) {
+      DeleteKeyRequest request =
+          DeleteKeyRequest.newBuilder()
+              .setName(KeyName.of("[PROJECT]", "[KEY]").toString())
+              .build();
+      ApiFuture<Empty> future =
+          recaptchaEnterpriseServiceClient.deleteKeyCallable().futureCall(request);
+      // Do something.
+      future.get();
+    }
   }
 }
-// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseServiceSettings_CreateAssessment_sync]
+// [END recaptchaenterprise_v1_generated_RecaptchaEnterpriseService_DeleteKey_async]
