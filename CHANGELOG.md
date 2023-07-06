@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.0](https://github.com/googleapis/java-recaptchaenterprise/compare/v3.0.12...v3.1.0) (2023-07-06)
+
+
+### Features
+
+* Add annotation reasons REFUND, REFUND_FRAUD, TRANSACTION_ACCEPTED, TRANSACTION_DECLINED and SOCIAL_SPAM ([206f720](https://github.com/googleapis/java-recaptchaenterprise/commit/206f720964861d706df96c94a00d3bd7ceb2f584))
+* Add RetrieveLegacySecretKey method ([#929](https://github.com/googleapis/java-recaptchaenterprise/issues/929)) ([206f720](https://github.com/googleapis/java-recaptchaenterprise/commit/206f720964861d706df96c94a00d3bd7ceb2f584))
+
 ## [3.0.12](https://github.com/googleapis/java-recaptchaenterprise/compare/v3.0.11...v3.0.12) (2022-10-05)
 
 
